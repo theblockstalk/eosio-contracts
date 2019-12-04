@@ -18,7 +18,7 @@ const network = ScatterJS.Network.fromJson({
 const rpc = new JsonRpc(network.fullhost());
 
 async function login() {
-    const connected = await ScatterJS.connect('Hello world app', {network})
+    const connected = await ScatterJS.connect('Commit reveal app', {network})
     if(!connected) return displayError("Log in with Scatter to use this app");
 
     eos = ScatterJS.eos(network, Api, {rpc});
@@ -58,15 +58,15 @@ const transact = async function(action, data, successMsg) {
 
 let walletContract = {}
 
-walletContract.hi = async function (message_hash) {
-    await transact("hi", {
+walletContract.commit = async function (message_hash) {
+    await transact("commit", {
         from: account.name,
         message_hash: message_hash
     }, "The hash has been added/updated in the table!")
 }
 
-walletContract.hiverify = async function (accountName, message) {
-    await transact("hiverify", {
+walletContract.reveal = async function (accountName, message) {
+    await transact("reveal", {
         from: accountName,
         message: message
     }, "The message matched the hash and removed the row from the table!")

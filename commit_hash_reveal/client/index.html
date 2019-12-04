@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-    <title>Hello world</title>
+    <title>Commit reveal</title>
 
     <!-- jquery -->
     <script src='lib/jquery-3.4.1.min.js'></script>
@@ -32,10 +32,10 @@
     <div class='container'>
         <div class='row new-row'>
             <div align='center'>
-                <h1>Hello world!</h1>
+                <h1>Commit reveal!</h1>
                 <p>
-                    This simple web application allows one account to store a hash o the blockchain,
-                    and another account to reveal the original string.
+                    This simple web application allows one account to store a hash on the blockchain,
+                    and another account to reveal the original string (digest).
                 </p>
                 <p>
                     It has no central back end, and interacts with a smart contract on the
@@ -79,7 +79,7 @@
                         <label>Message hash</label>
                         <input id="message_hash" class="form-control"></input>
                     </div>
-                    <button type="button" class="btn btn-primary" onclick="hiTx()">Store hash</button>
+                    <button type="button" class="btn btn-primary" onclick="commitTx()">Store hash</button>
                 </form>
             </div>
             <div class='col-md-6'>
@@ -92,7 +92,7 @@
                         <label>Message string</label>
                         <input id="message" class="form-control"></input>
                     </div>
-                    <button type="button" class="btn btn-primary" onclick="hiverifyTx()">Reveal string that was hashed</button>
+                    <button type="button" class="btn btn-primary" onclick="revealTx()">Reveal string that was hashed</button>
                 </form>
             </div>
         </div>

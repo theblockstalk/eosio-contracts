@@ -5,16 +5,16 @@ async function onload() {
     stringTosha256();
 }
 
-async function hiTx() {
+async function commitTx() {
     const message_hash = $("#message_hash").val();
-    await walletContract.hi(message_hash);
+    await walletContract.commit(message_hash);
     updateTable();
 }
 
-async function hiverifyTx() {
+async function revealTx() {
     const message = $("#message").val();
     const accountName = $("#account-name").val();
-    await walletContract.hiverify(accountName, message);
+    await walletContract.reveal(accountName, message);
     updateTable();
 }
 
