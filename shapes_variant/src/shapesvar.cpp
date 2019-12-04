@@ -1,88 +1,60 @@
-#include <variantuint.hpp>
+#include <shapesvar.hpp>
 
-ACTION variantuint::createme() {
+ACTION shapesvar::newrectangle(uint32_t _width, uint32_t _height) {
   name self = get_self();
-  variants_table _variants(self, self.value);
+  shapes_table _shapes(self, self.value);
 
-  _variants.emplace(self, [&](auto& row) {
-    row.id = _variants.available_primary_key();
-    uint8_t uin8 = 255; // largest uint8_t
-    row.var = uin8;
-  });
-
-  _variants.emplace(self, [&](auto& row) {
-    row.id = _variants.available_primary_key();
-    uint16_t uin16 = 65535; // largest uint16_t
-    row.var = uin16;
-  });
-
-  _variants.emplace(self, [&](auto& row) {
-    row.id = _variants.available_primary_key();
-    string str = "happy days";
-    row.var = str;
+  _shapes.emplace(self, [&](auto& row) {
+    row.id = _shapes.available_primary_key();
+    Rectangle r = {"rectangle", _width, _height};
+    row.shape_var = r;
   });
 }
 
-ACTION variantuint::updateme() {
+ACTION shapesvar::newcircle(uint32_t _diameter) {
   name self = get_self();
-  variants_table _variants(self, self.value);
+  shapes_table _shapes(self, self.value);
 
-  auto row_itr = _variants.begin();
-  while (row_itr != _variants.end())
-  {
-    std::variant<uint8_t, uint16_t, string> var = row_itr->var;
-    std::variant<uint8_t, uint16_t, string> newvar;
-    switch(var.index())
+  _shapes.emplace(self, [&](auto& row) {
+    row.id = _shapes.available_primary_key();
+    Circle c = {"circle", _diameter};
+    row.shape_var = c;
+  });
+}
+
+ACTION shapesvar::printme() {
+  shapes_table _shapes(get_self(), get_self().value);
+
+  auto row_itr = _shapes.begin();
+  while (row_itr != _shapes.end()) {
+    std::variant<Rectangle, Circle> shape_var = row_itr->shape_var;
+    switch(shape_var.index())
     {
       case 0:
         {
-          uint8_t newuint8 = std::get<uint8_t>(var) - 1;
-          newvar = newuint8;
+          Rectangle r = std::get<Rectangle>(shape_var);
+          print("Rectangle(width: ", r.width, ", height: ", r.height, ") ");
           break;
         }
       case 1:
         {
-          uint16_t newuint16 = std::get<uint16_t>(var) - 1;
-          newvar = newuint16;
+          Circle c = std::get<Circle>(shape_var);
+          print("Circle(diameter: ", c.diameter, ") ");
           break;
         }
-      case 2:
-      {
-        string oldstr = std::get<string>(var);
-        string newstr = oldstr + oldstr;
-        newvar = newstr;
-        break;
-      }
     }
-   _variants.modify(row_itr, self, [&](auto& row) {
-      row.var = newvar;
-    });
     ++row_itr;
   }
 }
+    
 
-ACTION variantuint::printme() {
-  variants_table _variants(get_self(), get_self().value);
+ACTION shapesvar::clear() {
+  require_auth(get_self());
 
-  auto row_itr = _variants.begin();
-  while (row_itr != _variants.end()) {
-    print("Row(", row_itr->id);
-    std::visit([&](auto const& var){ 
-      print(", ", var, "), ");
-    }, row_itr->var);
+  shapes_table _shapes(get_self(), get_self().value);
 
-    ++row_itr;
-  }
-}
-
-ACTION variantuint::clear() {
-  name self = get_self();
-  require_auth(self);
-
-  variants_table _variants(self, self.value);
-
-  auto row_itr = _variants.begin();
-  while (row_itr != _variants.end()) {
-    row_itr = _variants.erase(row_itr);
+  auto row_itr = _shapes.begin();
+  while (row_itr != _shapes.end()) {
+    row_itr = _shapes.erase(row_itr);
   }
 }
