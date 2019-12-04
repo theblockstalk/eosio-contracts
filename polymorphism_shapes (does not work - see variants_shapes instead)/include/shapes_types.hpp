@@ -1,5 +1,5 @@
-#ifndef sovreign_h
-#define sovereign_h
+#ifndef shapes_types_h
+#define shapes_types_h
 #include <string>
 
 using std::string;

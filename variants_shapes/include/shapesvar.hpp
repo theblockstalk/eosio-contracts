@@ -1,20 +1,8 @@
 #include <eosio/eosio.hpp>
+#include "shapes_types.hpp"
 
 using namespace std;
 using namespace eosio;
-
-struct Shape {
-  string shape_name;
-};
-
-struct Rectangle : public Shape {
-  uint32_t width;
-  uint32_t height;
-};
-
-struct Circle : public Shape {
-  uint32_t diameter;
-};
 
 CONTRACT shapesvar : public contract {
   public:
