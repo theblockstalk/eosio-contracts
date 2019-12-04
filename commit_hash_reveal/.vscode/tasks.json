@@ -1,0 +1,29 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558 
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build wasm and abi",
+            "type": "shell",
+            "group": "build",
+            "command": "eosio-cpp -I contract/include -R resource -o build/commitreveal.wasm -contract commitreveal ./contract/src/commitreveal.cpp --abigen",
+            "options": {
+                "cwd": "./"
+            },
+        },
+        {
+            "label": "Start nodeos",
+            "type": "shell",
+            "command": "nodeos --config ~/Documents/Apps/eosio/config/testing.ini >> nodeos.log 2>&1 &",
+            "options": {
+                "cwd": "./"
+            }
+        },
+        {
+            "label": "Stop nodeos",
+            "type": "shell",
+            "command": "pkill nodeos"
+        }
+    ]
+}

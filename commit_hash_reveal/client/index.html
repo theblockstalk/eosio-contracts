@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <title>Hello world</title>
+
+    <!-- jquery -->
+    <script src='lib/jquery-3.4.1.min.js'></script>
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href='lib/bootstrap-4.3.1-dist/css/bootstrap.min.css'>
+    <script src='lib/bootstrap-4.3.1-dist/js/bootstrap.min.js'></script>
+
+    <!-- Installattion for browser here https://github.com/EOSIO/eosjs -->
+    <script src='lib/eosjs-20.0.0-dist-web/eosjs-api.js'></script>
+    <script src='lib/eosjs-20.0.0-dist-web/eosjs-jsonrpc.js'></script>
+    <script src='lib/eosjs-20.0.0-dist-web/eosjs-jssig.js'></script>
+
+    <!-- Scatter signature provider, downloaded from cdn -->
+    <script src="lib/scatter/scatterjs-core.min.js"></script>
+    <script src="lib/scatter/scatterjs-plugin-eosjs2.min.js"></script>
+
+    <!-- App styles and logic -->
+    <script src='lib/utils.js'></script>
+    <script src='lib/scatter.js'></script>
+    <script src='lib/app.js'></script>
+    <link rel='stylesheet' href='lib/main.css'>
+  </head>
+  <body onload="onload()">
+    <div class='container'>
+        <div class='row new-row'>
+            <div align='center'>
+                <h1>Hello world!</h1>
+                <p>
+                    This simple web application allows one account to store a hash o the blockchain,
+                    and another account to reveal the original string.
+                </p>
+                <p>
+                    It has no central back end, and interacts with a smart contract on the
+                    <a href="https://jungletestnet.io">Jungle testnet</a>
+                    powered by <a href="https://eos.io">EOSIO</a>. It can be audited in real time by checking any
+                    <a href="https://eosauthority.com/account?account=hello5world1&network=jungle&scope=hello5world1&table=messages&limit=10&mode=contract&sub=tables">
+                        block explorer</a> or
+                    running a node.
+                </p>
+                <p>
+                    Source code <a href="https://github.com/theblockstalk/eosworkshop1/tree/master/helloworld11">here</a>.
+                </p>
+            </div>
+        </div>
+
+        <div class='row new-row'>
+            <div class='col-md-4'>
+                Logged in as:
+            </div>
+            <div id="user-account" class='col-md-8'>
+                
+            </div>
+            <div class='col-md-4'>
+                Hash:
+            </div>
+            <div id="user-hash" class='col-md-8'>
+                
+            </div>
+            <div class='col-md-4'>
+                Last updated:
+            </div>
+            <div id="user-updated" class='col-md-8'>
+                
+            </div>    
+        </div>
+
+        <div class='row new-row'>
+            <div class='col-md-6'>
+                <form>
+                    <div class="form-group">
+                        <label>Message hash</label>
+                        <input id="message_hash" class="form-control"></input>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="hiTx()">Store hash</button>
+                </form>
+            </div>
+            <div class='col-md-6'>
+                <form action="hiverify()">
+                    <div class="form-group">
+                        <label>Account name</label>
+                        <input id="account-name" class="form-control"></input>
+                    </div>
+                    <div class="form-group">
+                        <label>Message string</label>
+                        <input id="message" class="form-control"></input>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="hiverifyTx()">Reveal string that was hashed</button>
+                </form>
+            </div>
+        </div>
+
+        <div class='row new-row'>
+            <div align='center'>
+                <div id="user-alert" class="alert alert-success" role="alert">
+                    Alert user
+                </div>
+            </div>
+        </div>
+
+        <div class='row new-row'>
+            <div class='col-md-6'>
+                <label>String</label>
+                <input id="string" type="text" class="form-control" oninput="stringTosha256()"></input>
+            </div>
+            <div class='col-md-6'>
+                <label>Hash of string</label>
+                <input id="hashOfString" class="form-control" readonly></input>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
