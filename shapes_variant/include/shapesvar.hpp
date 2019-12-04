@@ -1,24 +1,22 @@
 #include <eosio/eosio.hpp>
-#include "../shapes.cpp"
-#include <variant>
 
 using namespace std;
 using namespace eosio;
 
-typedef variant<Rectangle, Circle> shape_variant;
-
-CONTRACT shapesvar : public contract {
+CONTRACT variantuint : public contract {
   public:
     using contract::contract;
-
-    ACTION newrectangle(uint32_t _width, uint32_t _height);
+    
+    ACTION addvalues();
+    ACTION printme();
     ACTION clear();
 
   private:
-    TABLE shapes_struct {
+    TABLE variant_struct {
       uint64_t id;
-      shape_variant shape;
+      std::variant<uint8_t, uint16_t> var;
       auto primary_key() const { return id; }
+      EOSLIB_SERIALIZE(variant_struct, (id)(var)) // abi is the same with or without this...
     };
-    typedef multi_index<name("shapes"), shapes_struct> shapes_table;
+    typedef multi_index<name("variants"), variant_struct> variants_table;
 };

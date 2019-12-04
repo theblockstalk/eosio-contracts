@@ -1,5 +1,5 @@
 #include <eosio/eosio.hpp>
-#include "../shapes.cpp"
+#include "shapes.hpp"
 
 using namespace std;
 using namespace eosio;

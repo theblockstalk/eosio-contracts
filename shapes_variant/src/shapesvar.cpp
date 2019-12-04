@@ -1,25 +1,43 @@
-#include <shapesvar.hpp>
+#include <variantuint.hpp>
 
-ACTION shapesvar::newrectangle(uint32_t _width, uint32_t _height) {
+ACTION variantuint::addvalues() {
   name self = get_self();
-  shapes_table _shapes(self, self.value);
+  variants_table _variants(self, self.value);
 
-  _shapes.emplace(self, [&](auto& row) {
-    row.id = _shapes.available_primary_key();
+  _variants.emplace(self, [&](auto& row) {
+    row.id = _variants.available_primary_key();
+    uint8_t var8 = 255; // largest uint8_t
+    row.var = var8;
+  });
 
-    shape_variant r = Rectangle(_width, _height);
-    row.shape = r;
+  _variants.emplace(self, [&](auto& row) {
+    row.id = _variants.available_primary_key();
+    uint16_t var16 = 65535; // largest uint16_t
+    row.var = var16;
   });
 }
 
-ACTION shapesvar::clear() {
+ACTION variantuint::printme() {
+  variants_table _variants(get_self(), get_self().value);
+
+  auto row_itr = _variants.begin();
+  while (row_itr != _variants.end()) {
+    print("Row id: ", row_itr->id);
+    std::visit([&](auto const& var){ 
+      print(" val = ", var);
+    }, row_itr->var);
+
+    ++row_itr;
+  }
+}
+
+ACTION variantuint::clear() {
   require_auth(get_self());
 
-  shapes_table _shapes(get_self(), get_self().value);
+  variants_table _variants(get_self(), get_self().value);
 
-  // Delete all records in table
-  auto row_itr = _shapes.begin();
-  while (row_itr != _shapes.end()) {
-    row_itr = _shapes.erase(row_itr);
+  auto row_itr = _variants.begin();
+  while (row_itr != _variants.end()) {
+    row_itr = _variants.erase(row_itr);
   }
 }

@@ -4,12 +4,12 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build Shapes polymorphic class",
+            "label": "Build Shapes contract using variants",
             "type": "shell",
             "group": "build",
-            "command": "eosio-cpp -I contract/include -R resource -o build/shapes.wasm -contract shapes ./contract/src/shapes.cpp --abigen",
+            "command": "eosio-cpp -I include -R resource -o shapesvar.wasm -contract shapesvar src/shapesvar.cpp --abigen",
             "options": {
-                "cwd": "./shapes_polymorphic_type"
+                "cwd": "./shapes_variant"
             },
         },
     ]
