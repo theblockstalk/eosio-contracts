@@ -7,14 +7,15 @@ CONTRACT variantuint : public contract {
   public:
     using contract::contract;
     
-    ACTION addvalues();
+    ACTION createme();
+    ACTION updateme();
     ACTION printme();
     ACTION clear();
 
   private:
     TABLE variant_struct {
       uint64_t id;
-      std::variant<uint8_t, uint16_t> var;
+      std::variant<uint8_t, uint16_t, string> var;
       auto primary_key() const { return id; }
       /*
        * EOSLIB_SERIALIZE macro needed.
@@ -23,7 +24,7 @@ CONTRACT variantuint : public contract {
        * and printme() will show incorrect values
        * Row id: 0 val = 255Row id: 1 val = 255
        */
-      EOSLIB_SERIALIZE(variant_struct, (id)(var)) // abi is the same with or without this...
+      EOSLIB_SERIALIZE(variant_struct, (id)(var))
     };
     typedef multi_index<name("variants"), variant_struct> variants_table;
 };
