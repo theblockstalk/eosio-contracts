@@ -6,14 +6,14 @@ ACTION variantuint::addvalues() {
 
   _variants.emplace(self, [&](auto& row) {
     row.id = _variants.available_primary_key();
-    uint8_t var8 = 255; // largest uint8_t
-    row.var = var8;
+    uint8_t uin8 = 255; // largest uint8_t
+    row.var = uin8;
   });
 
   _variants.emplace(self, [&](auto& row) {
     row.id = _variants.available_primary_key();
-    uint16_t var16 = 65535; // largest uint16_t
-    row.var = var16;
+    uint16_t uin16 = 65535; // largest uint16_t
+    row.var = uin16;
   });
 }
 
@@ -32,9 +32,10 @@ ACTION variantuint::printme() {
 }
 
 ACTION variantuint::clear() {
-  require_auth(get_self());
+  name self = get_self();
+  require_auth(self);
 
-  variants_table _variants(get_self(), get_self().value);
+  variants_table _variants(self, self.value);
 
   auto row_itr = _variants.begin();
   while (row_itr != _variants.end()) {
