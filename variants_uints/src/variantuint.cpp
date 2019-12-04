@@ -1,4 +1,4 @@
-#include <shapesvar.hpp>
+#include <variantuint.hpp>
 
 ACTION shapesvar::newrectangle(uint32_t _width, uint32_t _height) {
   name self = get_self();
