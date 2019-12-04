@@ -2,7 +2,8 @@
 
 ### polymorphism_shapes
 
-How not to create polymorphic structures in the EOSIO database
+How NOT to create polymorphic structures in the EOSIO database (see variants_shapes for a correct solution)
+
 ### variants_shapes
 
 Using variants to store different shapes in the EOSIO database
