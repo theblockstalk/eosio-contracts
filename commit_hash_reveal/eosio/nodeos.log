@@ -1,0 +1,180 @@
+Config file "/home/developers/.local/share/eosio/nodeos/config/testing.ini" missing.
+Config file "/home/developers/.local/share/eosio/nodeos/config/./testing.ini" missing.
+<6>info  2019-12-04T14:53:48.942 nodeos    chain_plugin.cpp:556          plugin_initialize    ] initializing chain plugin
+<6>info  2019-12-04T14:53:48.956 nodeos    chain_plugin.cpp:408          operator()           ] Support for builtin protocol feature 'PREACTIVATE_FEATURE' (with digest of '0ec7e080177b2c02b278d5088611686b49d739925a92d9bfcacd7fc6b74053bd') is enabled without activation restrictions
+<6>info  2019-12-04T14:53:48.958 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'ONLY_LINK_TO_EXISTING_PERMISSION' (with digest of '1a99a59d87e06e09ec5b028a9cbb7749b4a5ad8819004365d02dc4379a8b7241') is enabled with preactivation required
+<6>info  2019-12-04T14:53:48.958 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'FORWARD_SETCODE' (with digest of '2652f5f96006294109b3dd0bbde63693f55324af452b799ee137a81a905eed25') is enabled with preactivation required
+<6>info  2019-12-04T14:53:48.958 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'REPLACE_DEFERRED' (with digest of 'ef43112c6543b88db2283a2e077278c315ae2c84719a8b25f25cc88565fbea99') is enabled with preactivation required
+<6>info  2019-12-04T14:53:48.958 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'NO_DUPLICATE_DEFERRED_ID' (with digest of '4a90c00d55454dc5b059055ca213579c6ea856967712a56017487886a4d4cc0f') is enabled with preactivation required
+<6>info  2019-12-04T14:53:48.958 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'RAM_RESTRICTIONS' (with digest of '4e7bf348da00a945489b2a681749eb56f5de00b900014e137ddae39f48f69d67') is enabled with preactivation required
+<6>info  2019-12-04T14:53:48.958 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'DISALLOW_EMPTY_PRODUCER_SCHEDULE' (with digest of '68dcaa34c0517d19666e6b33add67351d8c5f69e999ca1e37931bc410a297428') is enabled with preactivation required
+<6>info  2019-12-04T14:53:48.958 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'ONLY_BILL_FIRST_AUTHORIZER' (with digest of '8ba52fe7a3956c5cd3a656a3174b931d3bb2abb45578befc59f283ecd816a405') is enabled with preactivation required
+<6>info  2019-12-04T14:53:48.958 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'RESTRICT_ACTION_TO_SELF' (with digest of 'ad9e3d8f650687709fd68f4b90b41f7d825a365b02c23a636cef88ac2ac00c43') is enabled with preactivation required
+<6>info  2019-12-04T14:53:48.958 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'FIX_LINKAUTH_RESTRICTION' (with digest of 'e0fb64b1085cc5538970158d05a009c24e276fb94e1a0bf6a528b48fbc4ff526') is enabled with preactivation required
+<6>info  2019-12-04T14:53:48.958 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'GET_SENDER' (with digest of 'f0af56d2c5a48d60a4a5b5c903edfb7db3a736a94ed589d0b797df33ff9d3e1d') is enabled with preactivation required
+<4>warn  2019-12-04T14:53:48.980 nodeos    chain_plugin.cpp:958          plugin_initialize    ] 13 St13runtime_error: "state" database dirty flag set
+rethrow "state" database dirty flag set: 
+    {"what":"\"state\" database dirty flag set"}
+    nodeos  chain_plugin.cpp:958 plugin_initialize
+<3>error 2019-12-04T14:53:48.980 nodeos    main.cpp:107                  main                 ] database dirty flag set (likely due to unclean shutdown): replay required
+<6>info  2019-12-04T14:57:36.804 nodeos    chain_plugin.cpp:556          plugin_initialize    ] initializing chain plugin
+<6>info  2019-12-04T14:57:36.806 nodeos    chain_plugin.cpp:408          operator()           ] Support for builtin protocol feature 'PREACTIVATE_FEATURE' (with digest of '0ec7e080177b2c02b278d5088611686b49d739925a92d9bfcacd7fc6b74053bd') is enabled without activation restrictions
+<6>info  2019-12-04T14:57:36.806 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'ONLY_LINK_TO_EXISTING_PERMISSION' (with digest of '1a99a59d87e06e09ec5b028a9cbb7749b4a5ad8819004365d02dc4379a8b7241') is enabled with preactivation required
+<6>info  2019-12-04T14:57:36.806 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'FORWARD_SETCODE' (with digest of '2652f5f96006294109b3dd0bbde63693f55324af452b799ee137a81a905eed25') is enabled with preactivation required
+<6>info  2019-12-04T14:57:36.806 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'REPLACE_DEFERRED' (with digest of 'ef43112c6543b88db2283a2e077278c315ae2c84719a8b25f25cc88565fbea99') is enabled with preactivation required
+<6>info  2019-12-04T14:57:36.806 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'NO_DUPLICATE_DEFERRED_ID' (with digest of '4a90c00d55454dc5b059055ca213579c6ea856967712a56017487886a4d4cc0f') is enabled with preactivation required
+<6>info  2019-12-04T14:57:36.806 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'RAM_RESTRICTIONS' (with digest of '4e7bf348da00a945489b2a681749eb56f5de00b900014e137ddae39f48f69d67') is enabled with preactivation required
+<6>info  2019-12-04T14:57:36.806 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'DISALLOW_EMPTY_PRODUCER_SCHEDULE' (with digest of '68dcaa34c0517d19666e6b33add67351d8c5f69e999ca1e37931bc410a297428') is enabled with preactivation required
+<6>info  2019-12-04T14:57:36.806 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'ONLY_BILL_FIRST_AUTHORIZER' (with digest of '8ba52fe7a3956c5cd3a656a3174b931d3bb2abb45578befc59f283ecd816a405') is enabled with preactivation required
+<6>info  2019-12-04T14:57:36.806 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'RESTRICT_ACTION_TO_SELF' (with digest of 'ad9e3d8f650687709fd68f4b90b41f7d825a365b02c23a636cef88ac2ac00c43') is enabled with preactivation required
+<6>info  2019-12-04T14:57:36.806 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'FIX_LINKAUTH_RESTRICTION' (with digest of 'e0fb64b1085cc5538970158d05a009c24e276fb94e1a0bf6a528b48fbc4ff526') is enabled with preactivation required
+<6>info  2019-12-04T14:57:36.806 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'GET_SENDER' (with digest of 'f0af56d2c5a48d60a4a5b5c903edfb7db3a736a94ed589d0b797df33ff9d3e1d') is enabled with preactivation required
+<6>info  2019-12-04T14:57:36.806 nodeos    chain_plugin.cpp:732          plugin_initialize    ] Hard replay requested: deleting state database
+<6>info  2019-12-04T14:57:36.806 nodeos    block_log.cpp:360             repair_log           ] Recovering Block Log...
+<4>warn  2019-12-04T14:57:36.813 nodeos    chain_plugin.cpp:958          plugin_initialize    ] 3190003 block_log_not_found: block log can not be found
+Block log not found in '/home/developers/.local/share/eosio/nodeos/data/blocks'
+    {"blocks_dir":"/home/developers/.local/share/eosio/nodeos/data/blocks"}
+    nodeos  block_log.cpp:362 repair_log
+<3>error 2019-12-04T14:57:36.813 nodeos    main.cpp:114                  main                 ] 3190003 block_log_not_found: block log can not be found
+Block log not found in '/home/developers/.local/share/eosio/nodeos/data/blocks'
+    {"blocks_dir":"/home/developers/.local/share/eosio/nodeos/data/blocks"}
+    nodeos  block_log.cpp:362 repair_log
+rethrow
+    {}
+    nodeos  chain_plugin.cpp:958 plugin_initialize
+<6>info  2019-12-04T15:00:37.730 nodeos    chain_plugin.cpp:556          plugin_initialize    ] initializing chain plugin
+<6>info  2019-12-04T15:00:37.731 nodeos    chain_plugin.cpp:408          operator()           ] Support for builtin protocol feature 'PREACTIVATE_FEATURE' (with digest of '0ec7e080177b2c02b278d5088611686b49d739925a92d9bfcacd7fc6b74053bd') is enabled without activation restrictions
+<6>info  2019-12-04T15:00:37.731 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'ONLY_LINK_TO_EXISTING_PERMISSION' (with digest of '1a99a59d87e06e09ec5b028a9cbb7749b4a5ad8819004365d02dc4379a8b7241') is enabled with preactivation required
+<6>info  2019-12-04T15:00:37.731 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'FORWARD_SETCODE' (with digest of '2652f5f96006294109b3dd0bbde63693f55324af452b799ee137a81a905eed25') is enabled with preactivation required
+<6>info  2019-12-04T15:00:37.731 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'REPLACE_DEFERRED' (with digest of 'ef43112c6543b88db2283a2e077278c315ae2c84719a8b25f25cc88565fbea99') is enabled with preactivation required
+<6>info  2019-12-04T15:00:37.731 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'NO_DUPLICATE_DEFERRED_ID' (with digest of '4a90c00d55454dc5b059055ca213579c6ea856967712a56017487886a4d4cc0f') is enabled with preactivation required
+<6>info  2019-12-04T15:00:37.731 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'RAM_RESTRICTIONS' (with digest of '4e7bf348da00a945489b2a681749eb56f5de00b900014e137ddae39f48f69d67') is enabled with preactivation required
+<6>info  2019-12-04T15:00:37.731 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'DISALLOW_EMPTY_PRODUCER_SCHEDULE' (with digest of '68dcaa34c0517d19666e6b33add67351d8c5f69e999ca1e37931bc410a297428') is enabled with preactivation required
+<6>info  2019-12-04T15:00:37.731 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'ONLY_BILL_FIRST_AUTHORIZER' (with digest of '8ba52fe7a3956c5cd3a656a3174b931d3bb2abb45578befc59f283ecd816a405') is enabled with preactivation required
+<6>info  2019-12-04T15:00:37.731 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'RESTRICT_ACTION_TO_SELF' (with digest of 'ad9e3d8f650687709fd68f4b90b41f7d825a365b02c23a636cef88ac2ac00c43') is enabled with preactivation required
+<6>info  2019-12-04T15:00:37.731 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'FIX_LINKAUTH_RESTRICTION' (with digest of 'e0fb64b1085cc5538970158d05a009c24e276fb94e1a0bf6a528b48fbc4ff526') is enabled with preactivation required
+<6>info  2019-12-04T15:00:37.731 nodeos    chain_plugin.cpp:395          operator()           ] Support for builtin protocol feature 'GET_SENDER' (with digest of 'f0af56d2c5a48d60a4a5b5c903edfb7db3a736a94ed589d0b797df33ff9d3e1d') is enabled with preactivation required
+<6>info  2019-12-04T15:00:37.740 nodeos    block_log.cpp:125             open                 ] Log is nonempty
+<6>info  2019-12-04T15:00:37.740 nodeos    block_log.cpp:152             open                 ] Index is nonempty
+<6>info  2019-12-04T15:00:37.743 nodeos    http_plugin.cpp:465           plugin_initialize    ] configured http to listen on 127.0.0.1:8888
+<6>info  2019-12-04T15:00:37.743 nodeos    main.cpp:93                   main                 ] nodeos version v1.8.6
+<6>info  2019-12-04T15:00:37.743 nodeos    main.cpp:94                   main                 ] nodeos using configuration file /home/developers/.local/share/eosio/nodeos/config/testing.ini
+<6>info  2019-12-04T15:00:37.743 nodeos    main.cpp:95                   main                 ] nodeos data directory is /home/developers/.local/share/eosio/nodeos/data
+<6>info  2019-12-04T15:00:37.743 nodeos    chain_plugin.cpp:982          plugin_startup       ] starting chain in read/write mode
+<6>info  2019-12-04T15:00:37.743 nodeos    chain_plugin.cpp:986          plugin_startup       ] Blockchain started; head block is #2508, genesis timestamp is 2018-06-01T12:00:00.000
+<6>info  2019-12-04T15:00:37.743 nodeos    producer_plugin.cpp:827       plugin_startup       ] producer plugin:  plugin_startup() begin
+<6>info  2019-12-04T15:00:37.743 nodeos    producer_plugin.cpp:850       plugin_startup       ] Launching block production for 1 producers at 2019-12-04T15:00:37.743.
+<4>warn  2019-12-04T15:00:37.744 nodeos    transaction_context.cp:108    deadline_timer       ] Using polled checktime; deadline timer too inaccurate: min:4us max:20008us mean:1356us stddev:1931us
+<6>info  2019-12-04T15:00:37.744 nodeos    producer_plugin.cpp:862       plugin_startup       ] producer plugin:  plugin_startup() end
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:538           plugin_startup       ] start listening for http requests
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/node/get_supported_apis
+<6>info  2019-12-04T15:00:37.744 nodeos    chain_api_plugin.cpp:77       plugin_startup       ] starting chain_api_plugin
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/abi_bin_to_json
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/abi_json_to_bin
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_abi
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_account
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_activated_protocol_features
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_block
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_block_header_state
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_code
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_code_hash
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_currency_balance
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_currency_stats
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_info
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_producer_schedule
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_producers
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_raw_abi
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_raw_code_and_abi
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_required_keys
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_scheduled_transactions
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_table_by_scope
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_table_rows
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/get_transaction_id
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/push_block
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/push_transaction
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/push_transactions
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/chain/send_transaction
+<6>info  2019-12-04T15:00:37.744 nodeos    history_api_plugin.cpp:38     plugin_startup       ] starting history_api_plugin
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/history/get_actions
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/history/get_controlled_accounts
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/history/get_key_accounts
+<6>info  2019-12-04T15:00:37.744 nodeos    http_plugin.cpp:625           add_handler          ] add api url: /v1/history/get_transaction
+<6>info  2019-12-04T15:00:38.000 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009cd4639b7c2... #2509 @ 2019-12-04T15:00:38.000 signed by eosio [trxs: 0, lib: 2508, confirmed: 0]
+<6>info  2019-12-04T15:00:38.502 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009cefa01fcba... #2510 @ 2019-12-04T15:00:38.500 signed by eosio [trxs: 0, lib: 2509, confirmed: 0]
+<6>info  2019-12-04T15:00:39.000 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009cf30109bed... #2511 @ 2019-12-04T15:00:39.000 signed by eosio [trxs: 0, lib: 2510, confirmed: 0]
+<6>info  2019-12-04T15:00:39.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009d08082cb45... #2512 @ 2019-12-04T15:00:39.500 signed by eosio [trxs: 0, lib: 2511, confirmed: 0]
+<6>info  2019-12-04T15:00:40.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009d18431ddf9... #2513 @ 2019-12-04T15:00:40.000 signed by eosio [trxs: 0, lib: 2512, confirmed: 0]
+<6>info  2019-12-04T15:00:40.500 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009d28579b227... #2514 @ 2019-12-04T15:00:40.500 signed by eosio [trxs: 0, lib: 2513, confirmed: 0]
+<6>info  2019-12-04T15:00:41.000 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009d3a5cce48f... #2515 @ 2019-12-04T15:00:41.000 signed by eosio [trxs: 0, lib: 2514, confirmed: 0]
+<6>info  2019-12-04T15:00:41.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009d4af005e09... #2516 @ 2019-12-04T15:00:41.500 signed by eosio [trxs: 0, lib: 2515, confirmed: 0]
+<6>info  2019-12-04T15:00:42.004 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009d57864806c... #2517 @ 2019-12-04T15:00:42.000 signed by eosio [trxs: 0, lib: 2516, confirmed: 0]
+<6>info  2019-12-04T15:00:42.502 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009d67d7dceb1... #2518 @ 2019-12-04T15:00:42.500 signed by eosio [trxs: 0, lib: 2517, confirmed: 0]
+<6>info  2019-12-04T15:00:43.000 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009d7dd5f1e93... #2519 @ 2019-12-04T15:00:43.000 signed by eosio [trxs: 0, lib: 2518, confirmed: 0]
+<6>info  2019-12-04T15:00:43.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009d8cb1fdda6... #2520 @ 2019-12-04T15:00:43.500 signed by eosio [trxs: 0, lib: 2519, confirmed: 0]
+<6>info  2019-12-04T15:00:44.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009d9468f4516... #2521 @ 2019-12-04T15:00:44.000 signed by eosio [trxs: 0, lib: 2520, confirmed: 0]
+<6>info  2019-12-04T15:00:44.500 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009da7b69ab53... #2522 @ 2019-12-04T15:00:44.500 signed by eosio [trxs: 0, lib: 2521, confirmed: 0]
+<6>info  2019-12-04T15:00:45.000 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009dbd3151b51... #2523 @ 2019-12-04T15:00:45.000 signed by eosio [trxs: 0, lib: 2522, confirmed: 0]
+<6>info  2019-12-04T15:00:45.500 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009dc5383a68a... #2524 @ 2019-12-04T15:00:45.500 signed by eosio [trxs: 0, lib: 2523, confirmed: 0]
+<6>info  2019-12-04T15:00:46.002 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009dde090c61a... #2525 @ 2019-12-04T15:00:46.000 signed by eosio [trxs: 0, lib: 2524, confirmed: 0]
+<6>info  2019-12-04T15:00:46.500 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009de25afeac1... #2526 @ 2019-12-04T15:00:46.500 signed by eosio [trxs: 0, lib: 2525, confirmed: 0]
+<6>info  2019-12-04T15:00:47.000 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009dff2090c40... #2527 @ 2019-12-04T15:00:47.000 signed by eosio [trxs: 0, lib: 2526, confirmed: 0]
+<6>info  2019-12-04T15:00:47.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009e015d49895... #2528 @ 2019-12-04T15:00:47.500 signed by eosio [trxs: 0, lib: 2527, confirmed: 0]
+<6>info  2019-12-04T15:00:48.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009e1ebe85a84... #2529 @ 2019-12-04T15:00:48.000 signed by eosio [trxs: 0, lib: 2528, confirmed: 0]
+<6>info  2019-12-04T15:00:48.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009e294bee54e... #2530 @ 2019-12-04T15:00:48.500 signed by eosio [trxs: 0, lib: 2529, confirmed: 0]
+<6>info  2019-12-04T15:00:49.000 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009e37785662c... #2531 @ 2019-12-04T15:00:49.000 signed by eosio [trxs: 0, lib: 2530, confirmed: 0]
+<6>info  2019-12-04T15:00:49.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009e4c365110f... #2532 @ 2019-12-04T15:00:49.500 signed by eosio [trxs: 0, lib: 2531, confirmed: 0]
+<6>info  2019-12-04T15:00:50.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009e568eeba21... #2533 @ 2019-12-04T15:00:50.000 signed by eosio [trxs: 0, lib: 2532, confirmed: 0]
+<6>info  2019-12-04T15:00:50.500 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009e6c9d51be4... #2534 @ 2019-12-04T15:00:50.500 signed by eosio [trxs: 0, lib: 2533, confirmed: 0]
+<6>info  2019-12-04T15:00:51.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009e7aea3eef2... #2535 @ 2019-12-04T15:00:51.000 signed by eosio [trxs: 0, lib: 2534, confirmed: 0]
+<6>info  2019-12-04T15:00:51.500 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009e82803d970... #2536 @ 2019-12-04T15:00:51.500 signed by eosio [trxs: 0, lib: 2535, confirmed: 0]
+<6>info  2019-12-04T15:00:52.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009e9a901fb45... #2537 @ 2019-12-04T15:00:52.000 signed by eosio [trxs: 0, lib: 2536, confirmed: 0]
+<6>info  2019-12-04T15:00:52.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009ead94b25b0... #2538 @ 2019-12-04T15:00:52.500 signed by eosio [trxs: 0, lib: 2537, confirmed: 0]
+<6>info  2019-12-04T15:00:53.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009ebc9dfa76e... #2539 @ 2019-12-04T15:00:53.000 signed by eosio [trxs: 0, lib: 2538, confirmed: 0]
+<6>info  2019-12-04T15:00:53.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009ec15e0a53e... #2540 @ 2019-12-04T15:00:53.500 signed by eosio [trxs: 0, lib: 2539, confirmed: 0]
+<6>info  2019-12-04T15:00:54.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009ed880d6ea6... #2541 @ 2019-12-04T15:00:54.000 signed by eosio [trxs: 0, lib: 2540, confirmed: 0]
+<6>info  2019-12-04T15:00:54.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009ee1370cd39... #2542 @ 2019-12-04T15:00:54.500 signed by eosio [trxs: 0, lib: 2541, confirmed: 0]
+<6>info  2019-12-04T15:00:55.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009efca39535e... #2543 @ 2019-12-04T15:00:55.000 signed by eosio [trxs: 0, lib: 2542, confirmed: 0]
+<6>info  2019-12-04T15:00:55.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009f01fe323ab... #2544 @ 2019-12-04T15:00:55.500 signed by eosio [trxs: 0, lib: 2543, confirmed: 0]
+<6>info  2019-12-04T15:00:56.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009f1c7864321... #2545 @ 2019-12-04T15:00:56.000 signed by eosio [trxs: 0, lib: 2544, confirmed: 0]
+<6>info  2019-12-04T15:00:56.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009f2df8a68d7... #2546 @ 2019-12-04T15:00:56.500 signed by eosio [trxs: 0, lib: 2545, confirmed: 0]
+<6>info  2019-12-04T15:00:57.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009f302f21c40... #2547 @ 2019-12-04T15:00:57.000 signed by eosio [trxs: 0, lib: 2546, confirmed: 0]
+<6>info  2019-12-04T15:00:57.500 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009f421da2f4e... #2548 @ 2019-12-04T15:00:57.500 signed by eosio [trxs: 0, lib: 2547, confirmed: 0]
+<6>info  2019-12-04T15:00:58.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009f5ecfda557... #2549 @ 2019-12-04T15:00:58.000 signed by eosio [trxs: 0, lib: 2548, confirmed: 0]
+<6>info  2019-12-04T15:00:58.505 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009f6f438e967... #2550 @ 2019-12-04T15:00:58.500 signed by eosio [trxs: 0, lib: 2549, confirmed: 0]
+<6>info  2019-12-04T15:00:59.005 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009f760c7b7ef... #2551 @ 2019-12-04T15:00:59.000 signed by eosio [trxs: 0, lib: 2550, confirmed: 0]
+<6>info  2019-12-04T15:00:59.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009f861635ae1... #2552 @ 2019-12-04T15:00:59.500 signed by eosio [trxs: 0, lib: 2551, confirmed: 0]
+<6>info  2019-12-04T15:01:00.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009f9961202e7... #2553 @ 2019-12-04T15:01:00.000 signed by eosio [trxs: 0, lib: 2552, confirmed: 0]
+<6>info  2019-12-04T15:01:00.502 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009fac4ec1e6f... #2554 @ 2019-12-04T15:01:00.500 signed by eosio [trxs: 0, lib: 2553, confirmed: 0]
+<6>info  2019-12-04T15:01:01.024 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009fb0acfeee2... #2555 @ 2019-12-04T15:01:01.000 signed by eosio [trxs: 0, lib: 2554, confirmed: 0]
+<6>info  2019-12-04T15:01:01.500 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009fc21def20d... #2556 @ 2019-12-04T15:01:01.500 signed by eosio [trxs: 0, lib: 2555, confirmed: 0]
+<6>info  2019-12-04T15:01:02.000 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009fd72a4e0de... #2557 @ 2019-12-04T15:01:02.000 signed by eosio [trxs: 0, lib: 2556, confirmed: 0]
+<6>info  2019-12-04T15:01:02.502 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009feccf632a7... #2558 @ 2019-12-04T15:01:02.500 signed by eosio [trxs: 0, lib: 2557, confirmed: 0]
+<6>info  2019-12-04T15:01:03.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 000009ffe08d696b... #2559 @ 2019-12-04T15:01:03.000 signed by eosio [trxs: 0, lib: 2558, confirmed: 0]
+<6>info  2019-12-04T15:01:03.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a004366b721... #2560 @ 2019-12-04T15:01:03.500 signed by eosio [trxs: 0, lib: 2559, confirmed: 0]
+<6>info  2019-12-04T15:01:04.000 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a018ab45241... #2561 @ 2019-12-04T15:01:04.000 signed by eosio [trxs: 0, lib: 2560, confirmed: 0]
+<6>info  2019-12-04T15:01:04.505 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a0216ef081b... #2562 @ 2019-12-04T15:01:04.500 signed by eosio [trxs: 0, lib: 2561, confirmed: 0]
+<6>info  2019-12-04T15:01:05.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a039881061f... #2563 @ 2019-12-04T15:01:05.000 signed by eosio [trxs: 0, lib: 2562, confirmed: 0]
+<6>info  2019-12-04T15:01:05.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a0454fef3ce... #2564 @ 2019-12-04T15:01:05.500 signed by eosio [trxs: 0, lib: 2563, confirmed: 0]
+<6>info  2019-12-04T15:01:06.000 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a05ee8a0b3a... #2565 @ 2019-12-04T15:01:06.000 signed by eosio [trxs: 0, lib: 2564, confirmed: 0]
+<6>info  2019-12-04T15:01:06.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a06277f3013... #2566 @ 2019-12-04T15:01:06.500 signed by eosio [trxs: 0, lib: 2565, confirmed: 0]
+<6>info  2019-12-04T15:01:07.002 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a07ace06907... #2567 @ 2019-12-04T15:01:07.000 signed by eosio [trxs: 0, lib: 2566, confirmed: 0]
+<6>info  2019-12-04T15:01:07.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a08e3f27523... #2568 @ 2019-12-04T15:01:07.500 signed by eosio [trxs: 0, lib: 2567, confirmed: 0]
+<6>info  2019-12-04T15:01:08.000 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a095a5ba1fb... #2569 @ 2019-12-04T15:01:08.000 signed by eosio [trxs: 0, lib: 2568, confirmed: 0]
+<6>info  2019-12-04T15:01:08.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a0a3aa20cb3... #2570 @ 2019-12-04T15:01:08.500 signed by eosio [trxs: 0, lib: 2569, confirmed: 0]
+<6>info  2019-12-04T15:01:09.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a0b739241c6... #2571 @ 2019-12-04T15:01:09.000 signed by eosio [trxs: 1, lib: 2570, confirmed: 0]
+<6>info  2019-12-04T15:01:09.503 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a0cb0377566... #2572 @ 2019-12-04T15:01:09.500 signed by eosio [trxs: 1, lib: 2571, confirmed: 0]
+<6>info  2019-12-04T15:01:10.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a0dc7d57097... #2573 @ 2019-12-04T15:01:10.000 signed by eosio [trxs: 2, lib: 2572, confirmed: 0]
+<6>info  2019-12-04T15:01:10.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a0e1385e399... #2574 @ 2019-12-04T15:01:10.500 signed by eosio [trxs: 2, lib: 2573, confirmed: 0]
+<6>info  2019-12-04T15:01:11.008 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a0f50ee5369... #2575 @ 2019-12-04T15:01:11.000 signed by eosio [trxs: 2, lib: 2574, confirmed: 0]
+<6>info  2019-12-04T15:01:11.505 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a10b5842f15... #2576 @ 2019-12-04T15:01:11.500 signed by eosio [trxs: 2, lib: 2575, confirmed: 0]
+<6>info  2019-12-04T15:01:12.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a11955c698e... #2577 @ 2019-12-04T15:01:12.000 signed by eosio [trxs: 0, lib: 2576, confirmed: 0]
+<6>info  2019-12-04T15:01:12.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a12a8586d21... #2578 @ 2019-12-04T15:01:12.500 signed by eosio [trxs: 0, lib: 2577, confirmed: 0]
+<6>info  2019-12-04T15:01:13.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a13c6367792... #2579 @ 2019-12-04T15:01:13.000 signed by eosio [trxs: 0, lib: 2578, confirmed: 0]
+<6>info  2019-12-04T15:01:13.500 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a140ae58640... #2580 @ 2019-12-04T15:01:13.500 signed by eosio [trxs: 0, lib: 2579, confirmed: 0]
+<6>info  2019-12-04T15:01:14.000 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a15f180d135... #2581 @ 2019-12-04T15:01:14.000 signed by eosio [trxs: 0, lib: 2580, confirmed: 0]
+<6>info  2019-12-04T15:01:14.502 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a163c7fc2b6... #2582 @ 2019-12-04T15:01:14.500 signed by eosio [trxs: 0, lib: 2581, confirmed: 0]
+<6>info  2019-12-04T15:01:15.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a1716804c47... #2583 @ 2019-12-04T15:01:15.000 signed by eosio [trxs: 0, lib: 2582, confirmed: 0]
+<6>info  2019-12-04T15:01:15.502 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a18321ae254... #2584 @ 2019-12-04T15:01:15.500 signed by eosio [trxs: 0, lib: 2583, confirmed: 0]
+<6>info  2019-12-04T15:01:16.001 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a19e962680c... #2585 @ 2019-12-04T15:01:16.000 signed by eosio [trxs: 0, lib: 2584, confirmed: 0]
+<6>info  2019-12-04T15:01:16.501 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a1a51416831... #2586 @ 2019-12-04T15:01:16.500 signed by eosio [trxs: 0, lib: 2585, confirmed: 0]
+<6>info  2019-12-04T15:01:17.000 nodeos    producer_plugin.cpp:1914      produce_block        ] Produced block 00000a1b7b28d690... #2587 @ 2019-12-04T15:01:17.000 signed by eosio [trxs: 0, lib: 2586, confirmed: 0]

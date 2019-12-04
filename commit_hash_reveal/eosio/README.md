@@ -1,0 +1,1 @@
+Copy testing.ini to "~/.local/share/eosio/nodeos/config/testing.ini"

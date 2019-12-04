@@ -15,7 +15,7 @@
         {
             "label": "Start nodeos",
             "type": "shell",
-            "command": "nodeos --config ~/Documents/Apps/eosio/config/testing.ini >> nodeos.log 2>&1 &",
+            "command": "nodeos --config testing.ini >> nodeos.log 2>&1 &",
             "options": {
                 "cwd": "./"
             }

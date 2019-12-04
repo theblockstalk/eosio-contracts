@@ -12,6 +12,8 @@ A no-framework (no React, Vue etc) front-end web app to connect to the smart con
 Unit test suit using eoslime.
 https://github.com/LimeChain/eoslime
 
+Also with nodeos testing mode configuration file eosio/testing.ini
+
 ## VS Studio commands
 - Settings to link EOSIO CDT library to the probject
 - Build the contract

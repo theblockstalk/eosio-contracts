@@ -3,10 +3,10 @@ const eoslime = require('eoslime').init('local');
 const eos = eoslime.Provider.eos;
 const crypto = require("./crypto");
 
-const CONTRACT_WASM_PATH = '../build/helloworld11.wasm';
-const CONTRACT_ABI_PATH = '../build/helloworld11.abi';
+const CONTRACT_WASM_PATH = '../build/commitreveal.wasm';
+const CONTRACT_ABI_PATH = '../build/commitreveal.abi';
 
-describe('helloworld11', function () {
+describe('commitreveal', function () {
     // Increase mocha(testing framework) time, otherwise tests fails
     this.timeout(15000);
 
@@ -31,7 +31,7 @@ describe('helloworld11', function () {
         const messageString = "hello world";
         const messageHash = crypto.sha256(messageString);
         
-        await contractAccount.hi(myAccount.name, messageHash, {from: myAccount});
+        await contractAccount.commit(myAccount.name, messageHash, {from: myAccount});
 
         messages = await messagesTable.equal(myAccount.name).find();
         const message = messages[0];
@@ -43,11 +43,11 @@ describe('helloworld11', function () {
         const messageString = "hello world";
         const messageHash = crypto.sha256(messageString);
 
-        await contractAccount.hi(myAccount.name, messageHash, {from: myAccount});
+        await contractAccount.commit(myAccount.name, messageHash, {from: myAccount});
         messages = await messagesTable.equal(myAccount.name).find();
         assert.equal(messages.length, 1, "hash was not added to the table");
 
-        await contractAccount.hiverify(myAccount.name, messageString);
+        await contractAccount.reveal(myAccount.name, messageString);
         messages = await messagesTable.equal(myAccount.name).find();
         assert.equal(messages.length, 0, "hash was not removed from the table");
     });
