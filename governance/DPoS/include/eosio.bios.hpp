@@ -2,6 +2,7 @@
 
 #include <eosio/action.hpp>
 #include <eosio/crypto.hpp>
+#include <eosio/binary_extension.hpp>
 #include <eosio/eosio.hpp>
 #include <eosio/fixed_bytes.hpp>
 #include <eosio/privileged.hpp>
@@ -10,13 +11,7 @@
 
 namespace eosiobios {
 
-   using eosio::action_wrapper;
-   using eosio::check;
-   using eosio::checksum256;
-   using eosio::ignore;
-   using eosio::name;
-   using eosio::permission_level;
-   using eosio::public_key;
+   using namespace eosio;
 
    struct permission_level_weight {
       permission_level  permission;
@@ -115,7 +110,7 @@ namespace eosiobios {
 
          typedef eosio::multi_index< "abihash"_n, abi_hash > abi_hash_table;
 
-         struct [[eosio::table, eosio::contract("eosio.system")]] voter_info {
+         TABLE voter_info {
             name                owner;
             name                producer;
             uint64_t primary_key()const { return owner.value; }
@@ -123,7 +118,11 @@ namespace eosiobios {
 
          typedef eosio::multi_index< "voters"_n, voter_info >  voters_table;
 
-         struct [[eosio::table, eosio::contract("eosio.system")]] producer_info {
+         block_signing_authority convert_to_block_signing_authority( const eosio::public_key& producer_key ) {
+            return block_signing_authority_v0{ .threshold = 1, .keys = {{producer_key, 1}} };
+         }
+         
+         TABLE producer_info {
             name                                                     owner;
             double                                                   total_votes = 0;
             eosio::public_key                                        producer_key;
@@ -139,7 +138,7 @@ namespace eosiobios {
                   }, *producer_authority );
                   if( !zero_threshold ) return *producer_authority;
                }
-               return convert_to_block_signing_authority( producer_key );
+               return block_signing_authority_v0{ .threshold = 1, .keys = {{producer_key, 1}} };
             }
 
             // template<typename DataStream>
@@ -181,10 +180,6 @@ namespace eosiobios {
             producers_table          _producers;
          
             const static uint8_t NUMBER_PRODUCERS = 21; // Can be up to 125
-
-            inline eosio::block_signing_authority convert_to_block_signing_authority( const eosio::public_key& producer_key ) {
-               return eosio::block_signing_authority_v0{ .threshold = 1, .keys = {{producer_key, 1}} };
-            }
 
    };
 }

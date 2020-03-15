@@ -5,7 +5,7 @@ namespace eosiobios {
 void bios::regproducer( const name& producer, const eosio::public_key& producer_key ) {
    require_auth( producer );
 
-   const eosio::block_signing_authority producer_authority = convert_to_block_signing_authority( producer_key );
+   const eosio::block_signing_authority producer_authority = bios::convert_to_block_signing_authority( producer_key );
    auto prod = _producers.find( producer.value );
 
    eosio::public_key producer_pub_key{};
@@ -38,11 +38,11 @@ void bios::voteproducer( const name& voter_name, const name& producer ) {
    if( voter != _voters.end() ) {
       check(voter->producer == producer, "You are already voting for this producer");
       _voters.emplace( voter_name, [&]( auto& v ) {
-         v.owner = voter_name
+         v.owner = voter_name;
          v.producer = producer;
       });
    } else {
-      _voters.modify( voter, same_payer, [&]( auto& v ) {
+      _voters.modify( voter, eosio::same_payer, [&]( auto& v ) {
          v.producer = producer;
       });
    }
@@ -50,7 +50,7 @@ void bios::voteproducer( const name& voter_name, const name& producer ) {
    auto pitr = _producers.find( producer.value );
    check( pitr != _producers.end() , "Producer has not registered");
 
-   asset voter_balance = eosio.token::get_balance( "eosio.token"_n, voter_name, symbol_code("SYS") )
+   asset voter_balance = token::get_balance( "eosio.token"_n, voter_name, symbol_code("SYS") );
 
    _producers.modify( pitr, same_payer, [&]( auto& p ) {
       p.total_votes = voter_balance.amount;
@@ -64,37 +64,35 @@ void bios::onblock( ignore<block_header> ) {
    name producer;
    _ds >> timestamp >> producer;
 
-   if( timestamp.slot - _gstate.last_producer_schedule_update.slot > 120 ) {
-      auto idx = _producers.get_index<"prototalvote"_n>();
+   auto idx = _producers.get_index<"prototalvote"_n>();
 
-      std::vector< <eosio::producer_authority > top_producers;
-      top_producers.reserve(NUMBER_PRODUCERS);
+   std::vector< eosio::producer_authority > top_producers;
+   top_producers.reserve(NUMBER_PRODUCERS);
 
-      for( auto it = idx.cbegin(); it != idx.cend() && top_producers.size() < NUMBER_PRODUCERS && 0 < it->total_votes && it->active(); ++it ) {
-         top_producers.emplace_back(
-            eosio::producer_authority{
-               .producer_name = it->owner,
-               .authority     = it->get_producer_authority()
-            }
-         );
-      }
-
-      if( top_producers.size() == 0 ) {
-         return;
-      }
-
-      std::sort( top_producers.begin(), top_producers.end(), []( const value_type& lhs, const value_type& rhs ) {
-         return lhs.first.producer_name < rhs.first.producer_name;
-      } );
-
-      std::vector<eosio::producer_authority> producers;
-
-      producers.reserve(top_producers.size());
-      for( auto& item : top_producers )
-         producers.push_back( std::move(item.first) );
-
-      set_proposed_producers( producers );
+   for( auto it = idx.cbegin(); it != idx.cend() && top_producers.size() < NUMBER_PRODUCERS && 0 < it->total_votes; ++it ) {
+      top_producers.emplace_back(
+         eosio::producer_authority{
+            .producer_name = it->owner,
+            .authority     = it->get_producer_authority()
+         }
+      );
    }
+
+   if( top_producers.size() == 0 ) {
+      return;
+   }
+
+   std::sort( top_producers.begin(), top_producers.end(), []( const eosio::producer_authority& lhs, const eosio::producer_authority& rhs ) {
+      return lhs.producer_name < rhs.producer_name;
+   } );
+
+   std::vector<eosio::producer_authority> producers;
+
+   producers.reserve(top_producers.size());
+   for( auto& item : top_producers )
+      producers.push_back( std::move(item) );
+
+   set_proposed_producers( producers );
 }
 
 void bios::setabi( name account, const std::vector<char>& abi ) {
