@@ -6,6 +6,7 @@
 #include <eosio/fixed_bytes.hpp>
 #include <eosio/privileged.hpp>
 #include <eosio/producer_schedule.hpp>
+#include "eosio.token.hpp"
 
 namespace eosiobios {
 
@@ -110,17 +111,22 @@ namespace eosiobios {
 
          typedef eosio::multi_index< "abihash"_n, abi_hash > abi_hash_table;
 
+         struct [[eosio::table, eosio::contract("eosio.system")]] voter_info {
+            name                owner;
+            name                producer;
+            uint64_t primary_key()const { return owner.value; }
+         };
+
+         typedef eosio::multi_index< "voters"_n, voter_info >  voters_table;
+
          struct [[eosio::table, eosio::contract("eosio.system")]] producer_info {
             name                                                     owner;
             double                                                   total_votes = 0;
             eosio::public_key                                        producer_key;
-            bool                                                     is_active = true;
             eosio::binary_extension<eosio::block_signing_authority>  producer_authority;
 
-            uint64_t primary_key()const { return owner.value;                             }
-            double   by_votes()const    { return is_active ? -total_votes : total_votes;  }
-            bool     active()const      { return is_active;                               }
-            void     deactivate()       { producer_key = public_key(); producer_authority.reset(); is_active = false; }
+            uint64_t primary_key()const { return owner.value;  }
+            double   by_votes()const    { return total_votes;  }
 
             eosio::block_signing_authority get_producer_authority()const {
                if( producer_authority.has_value() ) {
@@ -132,56 +138,49 @@ namespace eosiobios {
                return convert_to_block_signing_authority( producer_key );
             }
 
-            template<typename DataStream>
-            friend DataStream& operator << ( DataStream& ds, const producer_info& t ) {
-               ds << t.owner
-                  << t.total_votes
-                  << t.producer_key
-                  << t.is_active
-                  << t.url
-                  << t.unpaid_blocks
-                  << t.last_claim_time
-                  << t.location;
+            // template<typename DataStream>
+            // friend DataStream& operator << ( DataStream& ds, const producer_info& t ) {
+            //    ds << t.owner
+            //       << t.total_votes
+            //       << t.producer_key
+            //       << t.is_active
+            //       << t.url
+            //       << t.unpaid_blocks
+            //       << t.last_claim_time
+            //       << t.location;
 
-               if( !t.producer_authority.has_value() ) return ds;
+            //    if( !t.producer_authority.has_value() ) return ds;
 
-               return ds << t.producer_authority;
-            }
+            //    return ds << t.producer_authority;
+            // }
 
-            template<typename DataStream>
-            friend DataStream& operator >> ( DataStream& ds, producer_info& t ) {
-               return ds >> t.owner
-                        >> t.total_votes
-                        >> t.producer_key
-                        >> t.is_active
-                        >> t.url
-                        >> t.unpaid_blocks
-                        >> t.last_claim_time
-                        >> t.location
-                        >> t.producer_authority;
-            }
+            // template<typename DataStream>
+            // friend DataStream& operator >> ( DataStream& ds, producer_info& t ) {
+            //    return ds >> t.owner
+            //             >> t.total_votes
+            //             >> t.producer_key
+            //             >> t.is_active
+            //             >> t.url
+            //             >> t.unpaid_blocks
+            //             >> t.last_claim_time
+            //             >> t.location
+            //             >> t.producer_authority;
+            // }
          };
+
          typedef eosio::multi_index< "producers"_n, producer_info,
                                indexed_by<"prototalvote"_n, const_mem_fun<producer_info, double, &producer_info::by_votes>  >
                              > producers_table;
 
-         using newaccount_action = action_wrapper<"newaccount"_n, &bios::newaccount>;
-         using updateauth_action = action_wrapper<"updateauth"_n, &bios::updateauth>;
-         using deleteauth_action = action_wrapper<"deleteauth"_n, &bios::deleteauth>;
-         using linkauth_action = action_wrapper<"linkauth"_n, &bios::linkauth>;
-         using unlinkauth_action = action_wrapper<"unlinkauth"_n, &bios::unlinkauth>;
-         using canceldelay_action = action_wrapper<"canceldelay"_n, &bios::canceldelay>;
-         using setcode_action = action_wrapper<"setcode"_n, &bios::setcode>;
-         using setabi_action = action_wrapper<"setabi"_n, &bios::setabi>;
-         using setpriv_action = action_wrapper<"setpriv"_n, &bios::setpriv>;
-         using setalimits_action = action_wrapper<"setalimits"_n, &bios::setalimits>;
-         using setprods_action = action_wrapper<"setprods"_n, &bios::setprods>;
-         using setparams_action = action_wrapper<"setparams"_n, &bios::setparams>;
-         using reqauth_action = action_wrapper<"reqauth"_n, &bios::reqauth>;
-         using activate_action = action_wrapper<"activate"_n, &bios::activate>;
-         using reqactivated_action = action_wrapper<"reqactivated"_n, &bios::reqactivated>;
-
          private:
-         void bios::update_elected_producers( const block_timestamp& block_time );
+            voters_table             _voters;
+            producers_table          _producers;
+         
+            const static uint8_t NUMBER_PRODUCERS = 21; // Can be up to 125
+
+            inline eosio::block_signing_authority convert_to_block_signing_authority( const eosio::public_key& producer_key ) {
+               return eosio::block_signing_authority_v0{ .threshold = 1, .keys = {{producer_key, 1}} };
+            }
+
    };
 }
