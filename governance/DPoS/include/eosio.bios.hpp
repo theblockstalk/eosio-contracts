@@ -55,6 +55,10 @@ namespace eosiobios {
       public:
          using contract::contract;
 
+         ACTION regproducer( const name& producer, const eosio::public_key& producer_key );
+
+         ACTION voteproducer( const name& voter_name, const name& producer );
+         
          ACTION onblock( ignore<block_header> header );
          
          ACTION newaccount( name             creator,

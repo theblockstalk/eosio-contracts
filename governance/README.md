@@ -2,12 +2,14 @@
 
 Centralized
 "eosio" account centrally decides who will produce blocks (max 125 in schedule)
-`setprods( const std::vector<eosio::producer_authority>& schedule )`
+`ACTION setprods( const std::vector<eosio::producer_authority>& schedule )`
 
 Democratic
 
-DPoS (simplified from EOS)
-1 token 1 vote
+DPoS (1 token 1 vote)
+`ACTION regproducer( const name& producer, const eosio::public_key& producer_key );`
+`ACTION voteproducer( const name& voter_name, const name& producer );`
+`ACTION onblock( ignore<block_header> header );`
 
 DPoS (EOS)
 
