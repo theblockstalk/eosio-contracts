@@ -5,6 +5,8 @@ namespace eosiobios {
 void bios::regproducer( const name& producer, const eosio::public_key& producer_key ) {
    require_auth( producer );
 
+   producers_table _producers(get_self(), get_self().value);
+
    const eosio::block_signing_authority producer_authority = bios::convert_to_block_signing_authority( producer_key );
    auto prod = _producers.find( producer.value );
 
@@ -33,6 +35,9 @@ void bios::regproducer( const name& producer, const eosio::public_key& producer_
 
 void bios::voteproducer( const name& voter_name, const name& producer ) {
    require_auth( voter_name );
+
+   voters_table _voters(get_self(), get_self().value);
+   producers_table _producers(get_self(), get_self().value);
 
    auto voter = _voters.find( voter_name.value );
    if( voter != _voters.end() ) {
@@ -63,6 +68,8 @@ void bios::onblock( ignore<block_header> ) {
    block_timestamp timestamp;
    name producer;
    _ds >> timestamp >> producer;
+
+   producers_table _producers(get_self(), get_self().value);
 
    auto idx = _producers.get_index<"prototalvote"_n>();
 

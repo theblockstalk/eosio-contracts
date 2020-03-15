@@ -141,43 +141,33 @@ namespace eosiobios {
                return block_signing_authority_v0{ .threshold = 1, .keys = {{producer_key, 1}} };
             }
 
-            // template<typename DataStream>
-            // friend DataStream& operator << ( DataStream& ds, const producer_info& t ) {
-            //    ds << t.owner
-            //       << t.total_votes
-            //       << t.producer_key
-            //       << t.is_active
-            //       << t.url
-            //       << t.unpaid_blocks
-            //       << t.last_claim_time
-            //       << t.location;
+            template<typename DataStream>
+            friend DataStream& operator << ( DataStream& ds, const producer_info& t ) {
+               ds << t.owner
+                  << t.total_votes
+                  << t.producer_key;
 
-            //    if( !t.producer_authority.has_value() ) return ds;
+               if( !t.producer_authority.has_value() ) return ds;
 
-            //    return ds << t.producer_authority;
-            // }
+               return ds << t.producer_authority;
+            }
 
-            // template<typename DataStream>
-            // friend DataStream& operator >> ( DataStream& ds, producer_info& t ) {
-            //    return ds >> t.owner
-            //             >> t.total_votes
-            //             >> t.producer_key
-            //             >> t.is_active
-            //             >> t.url
-            //             >> t.unpaid_blocks
-            //             >> t.last_claim_time
-            //             >> t.location
-            //             >> t.producer_authority;
-            // }
+            template<typename DataStream>
+            friend DataStream& operator >> ( DataStream& ds, producer_info& t ) {
+               return ds >> t.owner
+                        >> t.total_votes
+                        >> t.producer_key
+                        >> t.producer_authority;
+            }
          };
 
          typedef eosio::multi_index< "producers"_n, producer_info,
                                indexed_by<"prototalvote"_n, const_mem_fun<producer_info, double, &producer_info::by_votes>  >
                              > producers_table;
 
-         private:
-            voters_table             _voters;
-            producers_table          _producers;
+         //private:
+            //voters_table             _voters(_self, eosio::get_self().value);
+            // producers_table          _producers(get_self(), get_self().value);
          
             const static uint8_t NUMBER_PRODUCERS = 21; // Can be up to 125
 
