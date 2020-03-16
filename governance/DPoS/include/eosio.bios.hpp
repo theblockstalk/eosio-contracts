@@ -105,8 +105,6 @@ namespace eosiobios {
             name              owner;
             checksum256       hash;
             uint64_t primary_key()const { return owner.value; }
-
-            EOSLIB_SERIALIZE( abi_hash, (owner)(hash) )
          };
 
          typedef eosio::multi_index< "abihash"_n, abi_hash > abi_hash_table;
@@ -167,7 +165,7 @@ namespace eosiobios {
                              > producers_table;
 
          TABLE eosio_global_state {
-            block_timestamp      last_producer_schedule_update; }
+            block_timestamp      last_producer_schedule_update;
          };
 
          typedef eosio::singleton< "gstate"_n, eosio_global_state >  eosio_global_state_singleton;
@@ -175,7 +173,7 @@ namespace eosiobios {
          voters_table _voters;
          producers_table _producers;
          eosio_global_state_singleton _gstate;
-         
+
          const static uint8_t NUMBER_PRODUCERS = 66;
 
    };
