@@ -68,7 +68,7 @@ No matter which consensus governance is used, all EOSIO chains have block produc
 - capacity for approximately 10,000-20,000 tps depending on usage, using EOSIO v2.0
 - up to 125 BPs in the schedule, as specified by `max_producers` in [config.hpp](https://github.com/EOSIO/eos/blob/master/libraries/chain/include/eosio/chain/config.hpp#L106)
 
-### Democratic
+### [Democratic](https://github.com/theblockstalk/eosio-contracts/tree/master/governance/Democratic)
 People can vote for producers. Votes are weighted as 1 person 1 vote. Each person can vote for 1 producer and can change at any time. The top 10 producers by votes enter the consensus schedule.
 
 Note:
@@ -80,7 +80,7 @@ Note:
 
 `ACTION newentity( name creator, name name, uint32_t account_type, authority owner, authority active)`
 
-### Delegated Proof of Stace DPOS
+### [Delegated Proof of Stace DPOS](https://github.com/theblockstalk/eosio-contracts/tree/master/governance/DPOS])
 Token holders vote with for producers. Votes are weighted by token balance. Each account can vote for 1 producer and can change at any time. The top 66 producers by votes enter the consensus schedule.
 
 `ACTION regproducer( const name& producer, const eosio::public_key& producer_key );`
@@ -89,7 +89,7 @@ Token holders vote with for producers. Votes are weighted by token balance. Each
 
 `ACTION onblock( ignore<block_header> header );`
 
-### Proof of Authority POA
+### [Proof of Authority POA](https://github.com/theblockstalk/eosio-contracts/tree/master/governance/POA)
 
 Accounts defined in the "active" permission of "eosio" account produces blocks and can update the permission, removing or adding new accounts up to 125.
 
@@ -97,7 +97,7 @@ Note this is the ["eosio.bios"](https://github.com/EOSIO/eosio.contracts/tree/ma
 
 `ACTION setprods( const std::vector<eosio::producer_authority>& schedule )`
 
-### Proof of Stace POS
+### [Proof of Stace POS](https://github.com/theblockstalk/eosio-contracts/tree/master/governance/POS)
 The wealthies 100 block producers enter the consensus schedule. Wealth is determined by locked tokens which cannot be unlocked for 1 day. If proof is provided that a block producer produces two blocks for the same block production slot, then their locked token balance is removed.
 
 `ACTION regproducer( const name& producer, const eosio::public_key& producer_key );`
