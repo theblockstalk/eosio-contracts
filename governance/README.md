@@ -1,11 +1,11 @@
-# EOSIO blockchain governance templates
+# EOSIO Blockchain Governance Templates
 
 This repositories contains examples to show different blockchain governance configurations, as defined in their system contracts.
 
 Glossary:
-- BP - Block producer
-- EOSIO - Blockchain software framework for deploying blockchains
-- EOS - One of the many blockchains deployed using EOSIO. EOS uses just one of the many configurations for governance, discussed in this repository.
+- BP: Block producer
+- EOSIO: Blockchain software framework for deploying blockchains
+- EOS: One of the many blockchains deployed using EOSIO. EOS uses just one of the many configurations for governance, discussed in this repository.
 
 ## Advantages
 
@@ -17,17 +17,15 @@ An EOSIO blockchain has a flexible, upgradeable architecture where most of the r
 - maintain full compatibility with other EOSIO blockchains as core node parameters and block consensus does not need to change
 - synchronize changes to the rules of engagement instantly accross the network (hard forks are much less needed, reducing administration and costs of governance upgrades)
 
-## Scope 
+## Governance Scope 
 
 Most of the practical rules of an EOSIO blockchain are defined in it's system contracts.
 
 The "eosio" contract defines the following rules:
 
 - Consensus
-- Account
---- allocation
---- names
---- Permissions and key management
+- Account allocation and names
+- Permissions and key management
 - Resource allocation (CPU, NET and RAM)
 - Block producer rewards and funding management
 - Contract deploy/upgrading
@@ -47,16 +45,18 @@ These templates are adaptions of the ["eosio.bios"](https://github.com/EOSIO/eos
 Different governance components are provided as separate templates. e.g. consensus templates are separated from resource management templates. This is so that the different modules' functionality can be easily understood. A deployed EOSIO blockchain will need to blend all governance features into one set of contracts.
 
 **Purpose and use**
-These contracts are (currently) to understand the capacity for customization and to provide reference for implementation only. They have not been audited or used in production.
+
+These templates are (currently) **to understand the capacity for customization and to provide reference implementation guide only**. They have not been significantly tested, audited, or used in production.
 
 **Production goverance contracts**
+
 The following is a list of governance contracts in use on deployed blockchains:
 - [EOS](https://github.com/EOSIO/eosio.contracts/tree/master/contracts/eosio.system)
 - [Telos](https://github.com/telosnetwork/telos.contracts/tree/master/contracts/eosio.system)
 - [Worbi](https://github.com/worbli/worbli.contracts/tree/master/contracts/eosio.system)
 
 ## Contributions
-If you would like to contribute to these templates please create a PR and it will be reviewed. To contract me please go to [https://jackandtheblockstalk.com](https://jackandtheblockstalk.com)
+If you would like to contribute to these templates please create a PR and it will be reviewed. To contract me please go to [jackandtheblockstalk.com](https://jackandtheblockstalk.com)
 
 ### Consensus
 
