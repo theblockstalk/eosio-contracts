@@ -7,6 +7,7 @@
 #include <eosio/fixed_bytes.hpp>
 #include <eosio/privileged.hpp>
 #include <eosio/producer_schedule.hpp>
+#include <eosio/singleton.hpp>
 #include "eosio.token.hpp"
 
 namespace eosiobios {
@@ -49,6 +50,8 @@ namespace eosiobios {
    class [[eosio::contract("eosio.bios")]] bios : public eosio::contract {
       public:
          using contract::contract;
+
+         bios(name receiver, name code, datastream<const char*> ds );
 
          ACTION regproducer( const name& producer, const eosio::public_key& producer_key );
 
@@ -165,11 +168,19 @@ namespace eosiobios {
                                indexed_by<"prototalvote"_n, const_mem_fun<producer_info, double, &producer_info::by_votes>  >
                              > producers_table;
 
-         //private:
-            //voters_table             _voters(_self, eosio::get_self().value);
-            // producers_table          _producers(get_self(), get_self().value);
+         TABLE eosio_global_state {
+            block_timestamp      last_producer_schedule_update;
+
+            //uint64_t primary_key()const { return owner.value; }
+         };
+
+         typedef eosio::singleton< "gstate"_n, eosio_global_state >  eosio_global_state_singleton;
          
-            const static uint8_t NUMBER_PRODUCERS = 21; // Can be up to 125
+         voters_table _voters;
+         producers_table _producers;
+         eosio_global_state_singleton _gstate;
+         
+         const static uint8_t NUMBER_PRODUCERS = 21; // Can be up to 125
 
    };
 }

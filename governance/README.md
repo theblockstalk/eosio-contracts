@@ -7,6 +7,7 @@ Centralized
 Democratic
 
 DPoS (1 token 1 vote)
+Can use up to 125 BPs for blocks as specified by max_producers in config.hpp(https://github.com/EOSIO/eos/blob/master/libraries/chain/include/eosio/chain/config.hpp#L106)
 `ACTION regproducer( const name& producer, const eosio::public_key& producer_key );`
 `ACTION voteproducer( const name& voter_name, const name& producer );`
 `ACTION onblock( ignore<block_header> header );`

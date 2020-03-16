@@ -2,10 +2,19 @@
 
 namespace eosiobios {
 
+bios::bios(name receiver, name code, datastream<const char*> ds ) :
+   contract(receiver, code, ds),
+   _voters(get_self(), get_self().value),
+   _producers(get_self(), get_self().value),
+   _gstate(get_self(), get_self().value) {
+
+   block_timestamp timestamp;
+   _ds >> timestamp;
+   _gstate.get_or_create(get_self(), {.last_producer_schedule_update=timestamp});
+}
+
 void bios::regproducer( const name& producer, const eosio::public_key& producer_key ) {
    require_auth( producer );
-
-   producers_table _producers(get_self(), get_self().value);
 
    const eosio::block_signing_authority producer_authority = bios::convert_to_block_signing_authority( producer_key );
    auto prod = _producers.find( producer.value );
@@ -35,9 +44,6 @@ void bios::regproducer( const name& producer, const eosio::public_key& producer_
 
 void bios::voteproducer( const name& voter_name, const name& producer ) {
    require_auth( voter_name );
-
-   voters_table _voters(get_self(), get_self().value);
-   producers_table _producers(get_self(), get_self().value);
 
    auto voter = _voters.find( voter_name.value );
    if( voter != _voters.end() ) {
@@ -69,37 +75,40 @@ void bios::onblock( ignore<block_header> ) {
    name producer;
    _ds >> timestamp >> producer;
 
-   producers_table _producers(get_self(), get_self().value);
+   auto gstate = _gstate.get();
+   
+   if( timestamp.slot - gstate.last_producer_schedule_update.slot > 120 ) {
+      auto idx = _producers.get_index<"prototalvote"_n>();
 
-   auto idx = _producers.get_index<"prototalvote"_n>();
+      std::vector< eosio::producer_authority > top_producers;
+      top_producers.reserve(NUMBER_PRODUCERS);
 
-   std::vector< eosio::producer_authority > top_producers;
-   top_producers.reserve(NUMBER_PRODUCERS);
+      for( auto it = idx.cbegin(); it != idx.cend() && top_producers.size() < NUMBER_PRODUCERS && 0 < it->total_votes; ++it ) {
+         top_producers.emplace_back(
+            eosio::producer_authority{
+               .producer_name = it->owner,
+               .authority     = it->get_producer_authority()
+            }
+         );
+      }
 
-   for( auto it = idx.cbegin(); it != idx.cend() && top_producers.size() < NUMBER_PRODUCERS && 0 < it->total_votes; ++it ) {
-      top_producers.emplace_back(
-         eosio::producer_authority{
-            .producer_name = it->owner,
-            .authority     = it->get_producer_authority()
-         }
-      );
+      if( top_producers.size() == 0 ) {
+         return;
+      }
+
+      std::sort( top_producers.begin(), top_producers.end(), []( const eosio::producer_authority& lhs, const eosio::producer_authority& rhs ) {
+         return lhs.producer_name < rhs.producer_name;
+      } );
+
+      std::vector<eosio::producer_authority> producers;
+
+      producers.reserve(top_producers.size());
+      for( auto& item : top_producers )
+         producers.push_back( std::move(item) );
+
+      _gstate.set({.last_producer_schedule_update=timestamp}, get_self());
+      set_proposed_producers( producers );
    }
-
-   if( top_producers.size() == 0 ) {
-      return;
-   }
-
-   std::sort( top_producers.begin(), top_producers.end(), []( const eosio::producer_authority& lhs, const eosio::producer_authority& rhs ) {
-      return lhs.producer_name < rhs.producer_name;
-   } );
-
-   std::vector<eosio::producer_authority> producers;
-
-   producers.reserve(top_producers.size());
-   for( auto& item : top_producers )
-      producers.push_back( std::move(item) );
-
-   set_proposed_producers( producers );
 }
 
 void bios::setabi( name account, const std::vector<char>& abi ) {
