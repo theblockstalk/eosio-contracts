@@ -167,9 +167,7 @@ namespace eosiobios {
                              > producers_table;
 
          TABLE eosio_global_state {
-            block_timestamp      last_producer_schedule_update;
-
-            //uint64_t primary_key()const { return owner.value; }
+            block_timestamp      last_producer_schedule_update; }
          };
 
          typedef eosio::singleton< "gstate"_n, eosio_global_state >  eosio_global_state_singleton;
@@ -178,7 +176,7 @@ namespace eosiobios {
          producers_table _producers;
          eosio_global_state_singleton _gstate;
          
-         const static uint8_t NUMBER_PRODUCERS = 21; // Can be up to 125
+         const static uint8_t NUMBER_PRODUCERS = 66;
 
    };
 }

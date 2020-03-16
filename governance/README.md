@@ -74,10 +74,15 @@ No matter which consensus governance is used, all EOSIO chains have block produc
 `ACTION setprods( const std::vector<eosio::producer_authority>& schedule )`
 
 ### Democratic
-TODO
+People can vote for producers. Votes are weighted as 1 person 1 vote. Each person can vote for 1 producer and can change at any time. The top 10 producers by votes enter the consensus schedule.
 
-### DPoS (1 token 1 vote)
-Token holders vote with for producers. Votes are weighted by token balance. Each account can vote for 1 producer and can change at any time. The top 21 producers by votes enter the consensus schedule (note that up to 125 could be set).
+Note:
+- Solution assumes that each person can only obtain one "people" account. This part of a democratic blockchain solution is not provided here.
+
+**TODO**
+
+### Delegated Proof of Stace DPOS
+Token holders vote with for producers. Votes are weighted by token balance. Each account can vote for 1 producer and can change at any time. The top 66 producers by votes enter the consensus schedule.
 
 `ACTION regproducer( const name& producer, const eosio::public_key& producer_key );`
 
@@ -85,8 +90,11 @@ Token holders vote with for producers. Votes are weighted by token balance. Each
 
 `ACTION onblock( ignore<block_header> header );`
 
-### POA
-TODO
+### Proof of Authority POA
 
-### POS
+**TODO**
 
+### Proof of Stace POS
+The wealthies 100 block producers enter the consensus schedule. Wealth is determined by locked tokens which cannot be unlocked for 1 day. If proof is provided that a block producer produces two blocks for the same block production slot, then their locked token balance is removed.
+
+**TODO**
