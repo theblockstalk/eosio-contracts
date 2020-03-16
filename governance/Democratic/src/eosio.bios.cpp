@@ -115,7 +115,7 @@ void bios::newaccount( name creator, name name, ignore<authority> owner, ignore<
    check(eosio::get_sender() == get_self(), "Cannot call newaccount directly");
 }
 
-void bios::newperson( name creator, name name, uint32_t account_type, authority owner, authority active) {
+void bios::newperson( name creator, name name, authority owner, authority active) {
    // Check that this person has not already created an accounts...
 
    _people.emplace(name, [&]( auto& p ) {
@@ -126,7 +126,7 @@ void bios::newperson( name creator, name name, uint32_t account_type, authority 
       .send(creator, name, owner, active);
 }
 
-void bios::newentity( name creator, name name, uint32_t account_type, authority owner, authority active) {
+void bios::newentity( name creator, name name, authority owner, authority active) {
    bios::newaccount_action(get_self(), {creator, "active"_n})
       .send(creator, name, owner, active);
 }

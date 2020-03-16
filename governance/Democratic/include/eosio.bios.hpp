@@ -21,6 +21,8 @@ namespace eosiobios {
    struct key_weight {
       eosio::public_key  key;
       uint16_t           weight;
+
+      EOSLIB_SERIALIZE( key_weight, (key)(weight) )
    };
 
    struct wait_weight {
@@ -63,9 +65,9 @@ namespace eosiobios {
                           ignore<authority> owner,
                           ignore<authority> active);
 
-         ACTION newperson( name creator, name name, uint32_t account_type, authority owner, authority active);
+         ACTION newperson( name creator, name name, authority owner, authority active);
 
-         ACTION newentity( name creator, name name, uint32_t account_type, authority owner, authority active);
+         ACTION newentity( name creator, name name, authority owner, authority active);
                                    
          ACTION updateauth(  ignore<name>  account,
                            ignore<name>  permission,
