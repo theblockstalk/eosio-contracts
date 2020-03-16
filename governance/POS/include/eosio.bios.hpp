@@ -60,7 +60,7 @@ namespace eosiobios {
          
          ACTION unstake( name producer, assert quantity, std::string memo );
 
-         ACTION punishprod( name punisher, name producer_to_punish,  );
+         ACTION punishprod( name punisher, name producer_to_punish /* TODO */);
 
          ACTION onblock( ignore<block_header> header );
          

@@ -107,6 +107,15 @@ void bios::unstake( name producer, assert quantity, std::string memo ) {
    });
 }
 
+void bios::punishprod( name punisher, name producer_to_punish /* TODO */) {
+   // TODO
+   // 1. check that block headers are valid
+   // 2. check block headers have different hash
+   // 3. check block headers have same slot (block number)
+   // 4. check both blocks were authorized by the same producer (may need to use oracle to prove signature from blockchain history of keys)
+   // 5. Remove all staked balance from producer table
+}
+
 void bios::setabi( name account, const std::vector<char>& abi ) {
    abi_hash_table table(get_self(), get_self().value);
    auto itr = table.find( account.value );
