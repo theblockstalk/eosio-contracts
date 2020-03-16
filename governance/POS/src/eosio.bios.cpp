@@ -115,6 +115,8 @@ void bios::punishprod( name punisher, name producer_to_punish /* TODO */) {
    // 3. check block headers have same slot (block number)
    // 4. check both blocks were authorized by the same producer (may need to use oracle to prove signature from blockchain history of keys)
    // 5. Remove all staked balance from producer table
+
+   // This requires a bit of work and cryptography which is a bit fidgety to implement. It is quite possible, so encourage others to try this!
 }
 
 void bios::setabi( name account, const std::vector<char>& abi ) {
