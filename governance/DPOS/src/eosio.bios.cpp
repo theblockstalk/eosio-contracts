@@ -46,25 +46,36 @@ void bios::voteproducer( const name& voter_name, const name& producer ) {
    require_auth( voter_name );
 
    auto voter = _voters.find( voter_name.value );
+   
+   asset voter_balance = token::get_balance( "eosio.token"_n, voter_name, symbol_code("SYS") );
+
    if( voter != _voters.end() ) {
-      check(voter->producer == producer, "You are already voting for this producer");
+      name previous_producer = voter->producer
+      check(previous_producer == producer, "You are already voting for this producer");
+      int64_t previous_amount = voter->vote_amount;
+
       _voters.emplace( voter_name, [&]( auto& v ) {
          v.owner = voter_name;
          v.producer = producer;
+         v.vote_amount = voter_balance.amount; 
+      });
+
+      auto pitr = _producers.get( previous_producer.value, "Producer has not registered");
+
+      _producers.modify( pitr, same_payer, [&]( auto& p ) {
+         p.total_votes -= previous_amount;
       });
    } else {
       _voters.modify( voter, eosio::same_payer, [&]( auto& v ) {
          v.producer = producer;
+         v.vote_amount = voter_balance.amount;
       });
    }
 
-   auto pitr = _producers.find( producer.value );
-   check( pitr != _producers.end() , "Producer has not registered");
-
-   asset voter_balance = token::get_balance( "eosio.token"_n, voter_name, symbol_code("SYS") );
+   auto pitr = _producers.get( producer.value, "Producer has not registered");
 
    _producers.modify( pitr, same_payer, [&]( auto& p ) {
-      p.total_votes = voter_balance.amount;
+      p.total_votes += voter_balance.amount;
    });
 }
 

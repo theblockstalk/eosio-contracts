@@ -75,6 +75,11 @@ Note:
 - Solution assumes that each person can only obtain one "people" account. This part of a democratic blockchain solution is not provided here.
 
 **TODO**
+`ACTION newaccount( name creator, name name, uint32_t account_type, authority owner, authority active)`
+
+`ACTION newperson( name creator, name name, uint32_t account_type, authority owner, authority active)`
+
+`ACTION newentity( name creator, name name, uint32_t account_type, authority owner, authority active)`
 
 ### Delegated Proof of Stace DPOS
 Token holders vote with for producers. Votes are weighted by token balance. Each account can vote for 1 producer and can change at any time. The top 66 producers by votes enter the consensus schedule.

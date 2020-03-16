@@ -110,8 +110,9 @@ namespace eosiobios {
          typedef eosio::multi_index< "abihash"_n, abi_hash > abi_hash_table;
 
          TABLE voter_info {
-            name                owner;
-            name                producer;
+            name    owner;
+            name    producer;
+            int64_t vote_amount;
             uint64_t primary_key()const { return owner.value; }
          };
 
