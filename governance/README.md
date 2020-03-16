@@ -2,10 +2,10 @@
 
 This repositories contains examples to show different blockchain governance configurations, as defined in their system contracts.
 
-Glossary
-BP - Block producer
-EOSIO - Blockchain software framework for deploying blockchains
-EOS - One of the many blockchains deployed using EOSIO. EOS uses just one of the many configurations for governance, discussed in this repository.
+Glossary:
+- BP - Block producer
+- EOSIO - Blockchain software framework for deploying blockchains
+- EOS - One of the many blockchains deployed using EOSIO. EOS uses just one of the many configurations for governance, discussed in this repository.
 
 ## Advantages
 
@@ -13,9 +13,9 @@ An EOSIO blockchain has a flexible, upgradeable architecture where most of the r
 
 - have transparent rules of engagement
 - have transparent operation of the rules of engagement
-- easy configuration through smart contract with lots of official and community tooling
-- maintains full compatibility with other EOSIO blockchains as core node parameters and block consensus does not need to changed
-- instant network synchronization of changes to the rules of engagement (hard forks are much less needed, reducing administration and costs of governance upgrades)
+- easy configurable through smart contract with lots of official and community tooling
+- maintain full compatibility with other EOSIO blockchains as core node parameters and block consensus does not need to change
+- synchronize changes to the rules of engagement instantly accross the network (hard forks are much less needed, reducing administration and costs of governance upgrades)
 
 ## Scope 
 
@@ -25,9 +25,9 @@ The "eosio" contract defines the following rules:
 
 - Consensus
 - Account
-⋅⋅- allocation
-⋅⋅- names
-⋅⋅- Permissions and key management
+--- allocation
+--- names
+--- Permissions and key management
 - Resource allocation (CPU, NET and RAM)
 - Block producer rewards and funding management
 - Contract deploy/upgrading
@@ -46,8 +46,10 @@ These templates are adaptions of the ["eosio.bios"](https://github.com/EOSIO/eos
 
 Different governance components are provided as separate templates. e.g. consensus templates are separated from resource management templates. This is so that the different modules' functionality can be easily understood. A deployed EOSIO blockchain will need to blend all governance features into one set of contracts.
 
+**Purpose and use**
 These contracts are (currently) to understand the capacity for customization and to provide reference for implementation only. They have not been audited or used in production.
 
+**Production goverance contracts**
 The following is a list of governance contracts in use on deployed blockchains:
 - [EOS](https://github.com/EOSIO/eosio.contracts/tree/master/contracts/eosio.system)
 - [Telos](https://github.com/telosnetwork/telos.contracts/tree/master/contracts/eosio.system)
@@ -56,7 +58,7 @@ The following is a list of governance contracts in use on deployed blockchains:
 ## Contributions
 If you would like to contribute to these templates please create a PR and it will be reviewed. To contract me please go to [https://jackandtheblockstalk.com](https://jackandtheblockstalk.com)
 
-## Consensus
+### Consensus
 
 Different BP consensus governance can be built. Note that the core EOSIO consensus used is [aBFT](https://developers.eos.io/welcome/latest/protocol/consensus_protocol) and is governance agnostic. aBFT allows the system contract to update the schedule of block producers by calling the [set_proposed_producers](https://developers.eos.io/manuals/eosio.cdt/latest/group__privileged/#function-set_proposed_producers) intrinsic.
 
@@ -64,24 +66,23 @@ No matter which consensus governance is used, all EOSIO chains have block produc
 
 - 0.5s block time
 - capacity for approximately 10,000-20,000 tps depending on usage, using EOSIO v2.0
-- up to 125 BPs in the schedule, as specified by max_producers in [config.hpp](https://github.com/EOSIO/eos/blob/master/libraries/chain/include/eosio/chain/config.hpp#L106)
-
-Not implemented that may need to be considered
-
-- Producer payment
-- Sytem token initialization and integration with resource management accounting
-- Action wrappers
+- up to 125 BPs in the schedule, as specified by `max_producers` in [config.hpp](https://github.com/EOSIO/eos/blob/master/libraries/chain/include/eosio/chain/config.hpp#L106)
 
 ### Centralized
-"eosio" account centrally decides who will produce blocks
+"eosio" account centrally decides who will produce blocks.
+
 `ACTION setprods( const std::vector<eosio::producer_authority>& schedule )`
 
 ### Democratic
 TODO
 
 ### DPoS (1 token 1 vote)
+Token holders vote with for producers. Votes are weighted by token balance. Each account can vote for 1 producer and can change at any time. The top 21 producers by votes enter the consensus schedule (note that up to 125 could be set).
+
 `ACTION regproducer( const name& producer, const eosio::public_key& producer_key );`
+
 `ACTION voteproducer( const name& voter_name, const name& producer );`
+
 `ACTION onblock( ignore<block_header> header );`
 
 ### POA
