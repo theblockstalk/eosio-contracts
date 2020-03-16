@@ -117,8 +117,8 @@ namespace eosiobios {
 
          typedef eosio::multi_index< "voters"_n, voter_info >  voters_table;
 
-         block_signing_authority convert_to_block_signing_authority( const eosio::public_key& producer_key ) {
-            return block_signing_authority_v0{ .threshold = 1, .keys = {{producer_key, 1}} };
+         static inline eosio::block_signing_authority convert_to_block_signing_authority( const eosio::public_key& producer_key ) {
+            return eosio::block_signing_authority_v0{ .threshold = 1, .keys = {{producer_key, 1}} };
          }
          
          TABLE producer_info {
@@ -137,7 +137,7 @@ namespace eosiobios {
                   }, *producer_authority );
                   if( !zero_threshold ) return *producer_authority;
                }
-               return block_signing_authority_v0{ .threshold = 1, .keys = {{producer_key, 1}} };
+               return convert_to_block_signing_authority(producer_key);
             }
 
             template<typename DataStream>
