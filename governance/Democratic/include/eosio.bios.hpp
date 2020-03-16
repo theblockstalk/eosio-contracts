@@ -61,8 +61,12 @@ namespace eosiobios {
          ACTION newaccount( name             creator,
                           name             name,
                           ignore<authority> owner,
-                          ignore<authority> active){}
-                          
+                          ignore<authority> active);
+
+         ACTION newperson( name creator, name name, uint32_t account_type, authority owner, authority active);
+
+         ACTION newentity( name creator, name name, uint32_t account_type, authority owner, authority active);
+                                   
          ACTION updateauth(  ignore<name>  account,
                            ignore<name>  permission,
                            ignore<name>  parent,
@@ -175,6 +179,9 @@ namespace eosiobios {
          eosio_global_state_singleton _gstate;
 
          const static uint8_t NUMBER_PRODUCERS = 10;
+
+         using newaccount_action = action_wrapper<"newaccount"_n, &bios::newaccount>;
+      
 
    };
 }

@@ -46,12 +46,12 @@ void bios::voteproducer( const name& voter_name, const name& producer ) {
    require_auth( voter_name );
 
    auto person = _people.get( voter_name.value, "Only people can vote"); // Will throw error if no person found
-   name previous_producer = person->producer;
-   check(person->voted && previous_producer == producer, "You are already voting for this producer");
+   name previous_producer = person.producer;
+   check(person.voted && previous_producer == producer, "You are already voting for this producer");
    
    _people.modify( person, voter_name, [&]( auto& p ) {
       p.producer = producer;
-      if (!person->voted)
+      if (!person.voted)
          p.voted = true;
    });
 
@@ -61,8 +61,8 @@ void bios::voteproducer( const name& voter_name, const name& producer ) {
       p.total_votes += 1;
    });
 
-   pitr = _producers.find( previous_producer.value );
-   _producers.modify( pitr, same_payer, [&]( auto& p ) {
+   auto pitr2 = _producers.find( previous_producer.value );
+   _producers.modify( pitr2, same_payer, [&]( auto& p ) {
       p.total_votes -= 1;
    });
 }
@@ -119,8 +119,8 @@ void bios::newperson( name creator, name name, uint32_t account_type, authority 
    // Check that this person has not already created an accounts...
 
    _people.emplace(name, [&]( auto& p ) {
-         p.owner = voter_name;
-      })
+      p.owner = name;
+   });
 
    bios::newaccount_action(get_self(), {creator, "active"_n})
       .send(creator, name, owner, active);

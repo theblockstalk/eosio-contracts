@@ -50,7 +50,7 @@ void bios::voteproducer( const name& voter_name, const name& producer ) {
    asset voter_balance = token::get_balance( "eosio.token"_n, voter_name, symbol_code("SYS") );
 
    if( voter != _voters.end() ) {
-      name previous_producer = voter->producer
+      name previous_producer = voter->producer;
       check(previous_producer == producer, "You are already voting for this producer");
       int64_t previous_amount = voter->vote_amount;
 

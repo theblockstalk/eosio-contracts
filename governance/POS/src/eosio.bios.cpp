@@ -39,6 +39,7 @@ void bios::regproducer( const name& producer, const eosio::public_key& producer_
       });
    }
 }
+
 void bios::onblock( ignore<block_header> ) {
    require_auth(get_self());
 

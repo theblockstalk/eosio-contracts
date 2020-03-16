@@ -74,7 +74,6 @@ People can vote for producers. Votes are weighted as 1 person 1 vote. Each perso
 Note:
 - Solution assumes that each person can only obtain one "people" account. This part of a democratic blockchain solution is not provided here.
 
-**TODO**
 `ACTION newaccount( name creator, name name, uint32_t account_type, authority owner, authority active)`
 
 `ACTION newperson( name creator, name name, uint32_t account_type, authority owner, authority active)`
@@ -101,4 +100,12 @@ Note this is the ["eosio.bios"](https://github.com/EOSIO/eosio.contracts/tree/ma
 ### Proof of Stace POS
 The wealthies 100 block producers enter the consensus schedule. Wealth is determined by locked tokens which cannot be unlocked for 1 day. If proof is provided that a block producer produces two blocks for the same block production slot, then their locked token balance is removed.
 
-**TODO**
+`ACTION regproducer( const name& producer, const eosio::public_key& producer_key );`
+
+`ACTION onblock( ignore<block_header> header );`
+
+`[eosio::on_notify("eosio.token::transfer")]] void stake(name from, name to, assert quantity, std::string memo);`
+
+`ACTION unstake( name producer, assert quantity, std::string memo );`
+
+`ACTION punishprod( name punisher, name producer_to_punish /* TODO */);`
