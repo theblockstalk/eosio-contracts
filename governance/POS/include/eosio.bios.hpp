@@ -56,9 +56,9 @@ namespace eosiobios {
          ACTION regproducer( const name& producer, const eosio::public_key& producer_key );
          
          [[eosio::on_notify("eosio.token::transfer")]]
-         void stake(name from, name to, assert quantity, std::string memo);
+         void stake(name from, name to, asset quantity, std::string memo);
          
-         ACTION unstake( name producer, assert quantity, std::string memo );
+         ACTION unstake( name producer, asset quantity, std::string memo );
 
          ACTION punishprod( name punisher, name producer_to_punish /* TODO */);
 

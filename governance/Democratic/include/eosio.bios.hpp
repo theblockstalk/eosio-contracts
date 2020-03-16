@@ -181,7 +181,5 @@ namespace eosiobios {
          const static uint8_t NUMBER_PRODUCERS = 10;
 
          using newaccount_action = action_wrapper<"newaccount"_n, &bios::newaccount>;
-      
-
    };
 }

@@ -55,7 +55,7 @@ void bios::onblock( ignore<block_header> ) {
       std::vector< eosio::producer_authority > top_producers;
       top_producers.reserve(NUMBER_PRODUCERS);
 
-      for( auto it = idx.cbegin(); it != idx.cend() && top_producers.size() < NUMBER_PRODUCERS && 0 < it->total_votes; ++it ) {
+      for( auto it = idx.cbegin(); it != idx.cend() && top_producers.size() < NUMBER_PRODUCERS && 0 < it->total_stake; ++it ) {
          top_producers.emplace_back(
             eosio::producer_authority{
                .producer_name = it->owner,
@@ -83,10 +83,11 @@ void bios::onblock( ignore<block_header> ) {
    }
 }
 
-void bios::stake(name from, name to, assert quantity, std::string memo) {
-   check(quantity.symbol = symbol("SYS"), "Can only state the system token");
+void bios::stake(name from, name to, asset quantity, std::string memo) {
+   check(to == get_self(), "Must send to eosio");
+   check(quantity.symbol == symbol(symbol_code("SYS"), 4), "Can only state the system token");
 
-   auto prod = _producers.get( producer.value , "Producer not found");
+   auto prod = _producers.get( from.value , "Producer not found");
 
    _producers.modify( prod, eosio::same_payer, [&]( producer_info& info ){
       info.total_stake += quantity.amount;
@@ -94,17 +95,19 @@ void bios::stake(name from, name to, assert quantity, std::string memo) {
    });
 }
 
-void bios::unstake( name producer, assert quantity, std::string memo ) {
-   check(quantity.symbol = symbol("SYS"), "Can only unstate the system token");
+void bios::unstake( name producer, asset quantity, std::string memo ) {
+   check(quantity.symbol == symbol(symbol_code("SYS"), 4), "Can only unstate the system token");
 
    auto prod = _producers.get( producer.value , "Producer not found");
 
    time_point now = current_time_point();
-   check( now - prod->stake_time.time_since_epoch() > 60*60*24, "Can only unstake 1 day after last stake or unstake action");
+   time_point stake_time = prod.stake_time;
+   uint32_t elapsed = now.sec_since_epoch() - stake_time.sec_since_epoch();
+   check( elapsed > 60*60*24, "Can only unstake 1 day after last stake or unstake action");
 
    _producers.modify( prod, eosio::same_payer, [&]( producer_info& info ){
       info.total_stake -= quantity.amount;
-      info.stake_time = current_time_point;
+      info.stake_time = current_time_point();
    });
 }
 
