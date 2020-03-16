@@ -93,8 +93,6 @@ namespace eosiobios {
          
          ACTION setalimits( name account, int64_t ram_bytes, int64_t net_weight, int64_t cpu_weight );
 
-         ACTION setprods( const std::vector<eosio::producer_authority>& schedule );
-
          ACTION setparams( const eosio::blockchain_parameters& params );
 
          ACTION reqauth( name from );
