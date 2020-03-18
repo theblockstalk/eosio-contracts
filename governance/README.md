@@ -2,63 +2,21 @@
 
 This repositories contains examples to show different blockchain governance configurations, as defined in their system contracts.
 
-Glossary:
-- BP: Block producer
-- EOSIO: Blockchain software framework for deploying blockchains
-- EOS: One of the many blockchains deployed using EOSIO. EOS uses just one of the many configurations for governance, discussed in this repository.
+Background about the EOSIO software features and customizability:
+[https://medium.com/coinmonks/difference-between-eosio-software-and-eos-blockchain-13bcc57d1d9d](https://medium.com/coinmonks/difference-between-eosio-software-and-eos-blockchain-13bcc57d1d9d)
 
-## Advantages
+**Purpose and use**
 
-An EOSIO blockchain has a flexible, upgradeable architecture where most of the rules are defined through the system contracts. This makes EOSIO blockchains:
-
-- have transparent rules of engagement
-- have transparent operation of the rules of engagement
-- easy configurable through smart contract with lots of official and community tooling
-- maintain full compatibility with other EOSIO blockchains as core node parameters and block consensus does not need to change
-- synchronize changes to the rules of engagement instantly accross the network (hard forks are much less needed, reducing administration and costs of governance upgrades)
-
-## Governance Scope 
-
-Most of the practical rules of an EOSIO blockchain are defined in it's system contracts.
-
-The "eosio" contract defines the following rules:
-
-- Consensus
-- Account allocation and names
-- Permissions and key management
-- Resource allocation (CPU, NET and RAM)
-- Block producer rewards and funding management
-- Contract deploy/upgrading
-
-A number of auxilirary contracts provide additional rules and features:
-
-- ["eosio.token"](https://github.com/EOSIO/eosio.contracts/tree/master/contracts/eosio.token) a system token to use for resource management and payments
-- ["eosio.msig"](https://github.com/EOSIO/eosio.contracts/tree/master/contracts/eosio.msig) asynchronous transaction authorization
-- ["eosio.wrap"](https://github.com/EOSIO/eosio.contracts/tree/master/contracts/eosio.wrap) authorization bypass for the privledged accounts ("eosio") for blockchain management
-
-Other governance contracts can be built to support the system contracts such as governance forums or decentralize funding allocation systems.
-
-## The templates
+These templates are (currently) **to understand the capacity for customization and to provide a reference implementation guide only**. They have not been significantly tested, audited, or used in production.
 
 These templates are adaptions of the ["eosio.bios"](https://github.com/EOSIO/eosio.contracts/tree/master/contracts/eosio.bios) contract - are bare minimum contract for governance with no special features.
 
 Different governance components are provided as separate templates. e.g. consensus templates are separated from resource management templates. This is so that the different modules' functionality can be easily understood. A deployed EOSIO blockchain will need to blend all governance features into one set of contracts.
 
-**Purpose and use**
-
-These templates are (currently) **to understand the capacity for customization and to provide reference implementation guide only**. They have not been significantly tested, audited, or used in production.
-
-**Production goverance contracts**
-
-The following is a list of governance contracts in use on deployed blockchains:
-- [EOS](https://github.com/EOSIO/eosio.contracts/tree/master/contracts/eosio.system)
-- [Telos](https://github.com/telosnetwork/telos.contracts/tree/master/contracts/eosio.system)
-- [Worbi](https://github.com/worbli/worbli.contracts/tree/master/contracts/eosio.system)
-
-## Contributions
+** Contributions **
 If you would like to contribute to these templates please create a PR and it will be reviewed. To contract me please go to [jackandtheblockstalk.com](https://jackandtheblockstalk.com)
 
-### Consensus
+## Consensus Templates
 
 Different BP consensus governance can be built. Note that the core EOSIO consensus used is [aBFT](https://developers.eos.io/welcome/latest/protocol/consensus_protocol) and is governance agnostic. aBFT allows the system contract to update the schedule of block producers by calling the [set_proposed_producers](https://developers.eos.io/manuals/eosio.cdt/latest/group__privileged/#function-set_proposed_producers) intrinsic.
 
