@@ -13,7 +13,8 @@ These templates are adaptions of the ["eosio.bios"](https://github.com/EOSIO/eos
 
 Different governance components are provided as separate templates. e.g. consensus templates are separated from resource management templates. This is so that the different modules' functionality can be easily understood. A deployed EOSIO blockchain will need to blend all governance features into one set of contracts.
 
-** Contributions **
+**Contributions**
+
 If you would like to contribute to these templates please create a PR and it will be reviewed. To contract me please go to [jackandtheblockstalk.com](https://jackandtheblockstalk.com)
 
 ## Consensus Templates
