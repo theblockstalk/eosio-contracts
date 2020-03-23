@@ -39,6 +39,8 @@ Note:
 
 `ACTION newentity( name creator, name name, uint32_t account_type, authority owner, authority active)`
 
+`ACTION onblock( ignore<block_header> header );`
+
 ### [Delegated Proof of Stace DPOS](https://github.com/theblockstalk/eosio-contracts/tree/master/governance/DPOS])
 Token holders vote with for producers. Votes are weighted by token balance. Each account can vote for 1 producer and can change at any time. The top 66 producers by votes enter the consensus schedule.
 
