@@ -1,6 +1,6 @@
 # EOSIO Blockchain Governance Templates
 
-This repositories contains examples to show different blockchain governance configurations, as defined in their system contracts.
+This repository contains examples to show different blockchain governance configurations, as defined in their system contracts.
 
 Background about the EOSIO software features and customizability:
 [https://medium.com/coinmonks/difference-between-eosio-software-and-eos-blockchain-13bcc57d1d9d](https://medium.com/coinmonks/difference-between-eosio-software-and-eos-blockchain-13bcc57d1d9d)
@@ -9,7 +9,7 @@ Background about the EOSIO software features and customizability:
 
 These templates are (currently) **to understand the capacity for customization and to provide a reference implementation guide only**. They have not been significantly tested, audited, or used in production.
 
-These templates are adaptions of the ["eosio.bios"](https://github.com/EOSIO/eosio.contracts/tree/master/contracts/eosio.bios) contract - are bare minimum contract for governance with no special features.
+These templates are adaptations of the ["eosio.bios"](https://github.com/EOSIO/eosio.contracts/tree/master/contracts/eosio.bios) contract - are bare minimum contract for governance with no special features.
 
 Different governance components are provided as separate templates. e.g. consensus templates are separated from resource management templates. This is so that the different modules' functionality can be easily understood. A deployed EOSIO blockchain will need to blend all governance features into one set of contracts.
 
@@ -41,8 +41,8 @@ Note:
 
 `ACTION onblock( ignore<block_header> header );`
 
-### [Delegated Proof of Stace DPOS](https://github.com/theblockstalk/eosio-contracts/tree/master/governance/DPOS])
-Token holders vote with for producers. Votes are weighted by token balance. Each account can vote for 1 producer and can change at any time. The top 66 producers by votes enter the consensus schedule.
+### [Delegated Proof of Stake DPOS](https://github.com/theblockstalk/eosio-contracts/tree/master/governance/DPOS])
+Token holders vote with tokens for producers. Votes are weighted by token balance. Each account can vote for 1 producer and can change at any time. The top 66 producers by votes enter the consensus schedule.
 
 `ACTION regproducer( const name& producer, const eosio::public_key& producer_key );`
 
@@ -58,8 +58,8 @@ Note this is the ["eosio.bios"](https://github.com/EOSIO/eosio.contracts/tree/ma
 
 `ACTION setprods( const std::vector<eosio::producer_authority>& schedule )`
 
-### [Proof of Stace POS](https://github.com/theblockstalk/eosio-contracts/tree/master/governance/POS)
-The wealthies 100 block producers enter the consensus schedule. Wealth is determined by locked tokens which cannot be unlocked for 1 day. If proof is provided that a block producer produces two blocks for the same block production slot, then their locked token balance is removed.
+### [Proof of Stake POS](https://github.com/theblockstalk/eosio-contracts/tree/master/governance/POS)
+The wealthiest 100 block producers enter the consensus schedule. Wealth is determined by locked tokens which cannot be unlocked for 1 day. If proof is provided that a block producer produces two blocks for the same block production slot, then their locked token balance is removed.
 
 `ACTION regproducer( const name& producer, const eosio::public_key& producer_key );`
 
