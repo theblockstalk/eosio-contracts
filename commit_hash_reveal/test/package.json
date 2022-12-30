@@ -4,7 +4,7 @@
   "description": "Hello world smart contract",
   "dependencies": {
     "eoslime": "^1.0.0",
-    "mocha": "^6.2.2"
+    "mocha": "^10.2.0"
   },
   "devDependencies": {},
   "scripts": {
